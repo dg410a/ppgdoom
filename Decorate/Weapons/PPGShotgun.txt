@@ -1,0 +1,99 @@
+
+ACTOR PPGShotgun : PPGWeapon
+{
+	Weapon.AmmoType		"Shell"
+	Weapon.AmmoUse		1
+	Weapon.AmmoGive		8
+	Radius				12
+	Height				12
+	Weapon.SlotNumber 3
+//	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+//	+NOAUTOFIRE
+	Weapon.SelectionOrder 1300
+	AttackSound "shotgun/fire"
+//	Inventory.Icon "shotgun"
+	Inventory.PickupMessage "You got the Winchester 1887 Shotgun!"
+	Obituary "%k gave %o a taste of buckshot."
+	States
+	{
+	Spawn:
+		SHOT A -1
+		Stop
+   Deselect:
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999)
+      FISG A 0 A_PlaySound("weapon/holstera")
+      WSGG A 1 A_Lower
+	  WSGG A 0 A_Lower
+      Goto Deselect+2
+   Select:
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999)
+      TNT1 A 0 A_PlaySound("weapon/raisea")
+      TNT1 A 0 A_PlaySound("shotgun/bolt",CHAN_AUTO)
+	  WSGG A 1 A_Raise
+      WSGG A 0 A_Raise
+      Goto Select+3
+    Ready:
+    	WSGG A 1 A_WeaponReady(WRF_ALLOWUSER1)
+    	Loop
+    Fire:
+//    	ASHF A 0 BRIGHT A_GunFlash("Gunfire")
+    	WSGF A 1 BRIGHT Offset(5,37) A_FireBullets(5.6,3.05,7,5,"ShotgunPuff",1,1280)
+    	WSGF A 1 BRIGHT Offset(10,42)
+		WSGF B 1 Offset(0,42)
+		WSGF B 1 OffSet(-2,40)
+		WSGF B 1 OffSet(-4,38)
+		WSGF B 1 OffSet(-6,36)
+		WSGF A 1 OffSet(6,26)
+		WSGF A 1 OffSet(4,28)
+		WSGF A 1 OffSet(2,30)
+		WSGF A 4 OffSet(0,32)
+		WSGF A 1 OffSet(1,30)
+		WSGF A 1 OffSet(3,27)
+		WSGF A 1 OffSet(6,23)
+		WSGF B 1 OffSet(-5,39)
+		WSGF B 1 OffSet(-2,35)
+		WSGF B 1 OffSet(0,32) A_PlaySound("shotgun/bolt")
+		WSGF C 1 OffSet(1,31)
+		WSGF D 1 OffSet(2,30)
+		WSGF E 3 OffSet(3,29)
+		WSGF F 1 OffSet(2,30)
+		WSGF F 1 OffSet(1,31)
+		WSGG B 1 OffSet(0,32)
+		WSGG B 1 OffSet(-2,35)
+		WSGG B 1 OffSet(-5,39)
+		WSGG A 1 OffSet(6,23)
+		WSGG A 1 OffSet(3,27)
+		WSGG A 1 OffSet(1,30)
+		WSGG A 1 OffSet(0,32)
+//    	MBGC J 2 A_FireCustomMissile("DVSShellCasingSpawner2",-3,0,0,0)
+		TNT1 A 0 A_Refire
+    	Goto Ready
+//      Gunfire:
+//     	TNT1 A 0
+//      	TNT1 A 1 A_Light2
+//     	TNT1 A 1 A_Light1
+//      	TNT1 A 1 A_Light0
+//      	Stop
+   FBRaise:
+	  WSGG A 1 Offset(0,128)
+	  "####" "#" 1 Offset(0,112)
+	  "####" "#" 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,33)
+	  "####" "#" 0 A_TakeInventory("SPInUse",9999)
+	  Goto Ready
+   FLBRaise:
+	  WSGG A 1 Offset(0,128)
+	  "####" "#" 1 Offset(0,112)
+	  "####" "#" 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,33)
+	  "####" "#" 0 A_TakeInventory("SPInUse",9999)
+	  Goto Ready
+    }
+}

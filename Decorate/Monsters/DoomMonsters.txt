@@ -1,0 +1,94 @@
+ACTOR PPGZombieMan : Zombieman replaces Zombieman
+{
+//	DropItem "PPGClip" 160
+	DropItem "Glock18" 96
+	DropItem "PPGEnergy" 64 5
+}
+
+ACTOR PPGShotgunGuy : ShotgunGuy replaces ShotgunGuy
+{
+//	DropItem "PPGShell" 160
+	DropItem "PPGShotgun" 96
+	DropItem "PPGEnergy" 64 5
+}
+
+ACTOR PPGChaingunGuy : ChaingunGuy replaces ChaingunGuy
+{
+	DropItem "PPGClipBox" 96
+//	DropItem "M4A1Ammo" 160
+	DropItem "M4A1" 96
+	DropItem "PPGEnergy" 64 5
+}
+
+ACTOR PPGWolfensteinSS : WolfensteinSS replaces WolfensteinSS
+{
+	DropItem "PPGClip" 160
+	DropItem "PPGClipBox" 96
+	DropItem "M4A1Ammo" 160
+	DropItem "PPGEnergy" 64 5
+}
+
+ACTOR PPGImp : DoomImp replaces DoomImp
+{
+	DropItem "PPGEnergy" 64 5
+}
+
+ACTOR PPGDemon : Demon replaces Demon
+{
+	DropItem "PPGEnergy" 64 10
+}
+
+ACTOR PPGSpectre : Spectre replaces Spectre
+{
+	DropItem "PPGEnergy" 64 10
+}
+
+ACTOR PPGLostSoul : LostSoul replaces LostSoul
+{
+	DropItem "PPGEnergy" 64 10
+}
+
+ACTOR PPGCacodemon : Cacodemon replaces Cacodemon
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGHellKnight : HellKnight replaces HellKnight
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGBaronofHell : BaronofHell replaces BaronofHell
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGArachnotron : Arachnotron replaces Arachnotron
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGRevenant : Revenant replaces Revenant
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGFatso : Fatso replaces Fatso
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGArchVile : ArchVile replaces ArchVile
+{
+	DropItem "PPGEnergy" 64 20
+}
+
+ACTOR PPGSpiderMastermind : SpiderMastermind replaces SpiderMastermind
+{
+	DropItem "PPGEnergy" 48 100
+}
+
+ACTOR PPGCyberdemon : Cyberdemon replaces Cyberdemon
+{
+	DropItem "PPGEnergy" 48 100
+}

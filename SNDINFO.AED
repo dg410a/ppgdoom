@@ -1,0 +1,94 @@
+// Players
+
+$playeralias bls female *land blsm/land
+//$playersound blsm female *splat bdvsplat
+$playeralias bls female *jump blsm/jump
+$playeralias bls female *pain100 blsm/pain
+$playeralias bls female *pain75 blsm/pain
+$playeralias bls female *pain50 blsm/painh
+$playeralias bls female *pain25 blsm/painh
+$playeralias bls female *death blsm/death
+//$playersound blsm female *xdeath bdvdth
+//$playersound blsm female *gibbed	misc/gibbed
+$playeralias bls female *usefail blsm/usefail
+$playeralias bls female *grunt blsm/grunt
+
+blsm/jump blsmjump
+blsm/land blsmland
+
+$random blsm/pain { blsmpn1 blsmpn2 blsmpn3 }
+blsmpn1 blsmpn1
+blsmpn2 blsmpn2
+blsmpn3 blsmpn3
+
+$random blsm/painh { blsmpnh1 blsmpnh2 blsmpnh3 blsmpnh4 blsmpnh5 }
+blsmpnh1 blsmpnh1
+blsmpnh2 blsmpnh2
+blsmpnh3 blsmpnh3
+blsmpnh4 blsmpnh4
+blsmpnh5 blsmpnh5
+
+blsm/death blsmdth
+blsm/usefail blsmuf
+blsm/grunt blsmoof
+
+$random blsm/punch { blsmpnchl1 blsmpnchl2 }
+blsmpnchl1 blsmpnchl1
+blsmpnchl2 blsmpnchl2
+
+$random blsm/punchh { blsmpnchh1 blsmpnchh2 }
+blsmpnchh1 blsmpnchh1
+blsmpnchh2 blsmpnchh2
+
+// Weapons
+
+fists/raise fistsup
+fists/swing fistswng
+fists/wall puncwall
+fists/punch punch1
+fists/punch2 punch2
+roundhouse/swing rdhswng
+roundhouse/kick rdhkick
+weapon/raisea shotrs
+weapon/holstera shothls
+pistol/raise pstlrs
+pistol/holster pstlhls
+
+// Superpowers
+
+laser/fire lsrfire
+icebeam/fire ibmfire
+icebreath/fire icebfire
+bfr/fire bfrfire
+bfr/fly bfrfly
+bfr/impact bfrimp
+
+// Shotgun
+
+$random shotgun/fire { sgfirea sgfireb }
+sgfirea sgfirea
+sgfireb sgfireb
+shotgun/bolt sgbolt
+
+// Pistol
+
+glock/fire glkfire
+glock/boltb glkbltb
+
+// M4A1
+
+m4a1/fire m4a1f
+m4a1/raise m4a1rs
+m4a1/holster m4a1hls
+
+// AA12
+
+$random aa12/fire { aa12f aa12f2 aa12f3 }
+aa12f aa12f
+aa12f2 aa12f2
+aa12f3 aa12f3
+aa12/clipout aa12out
+aa12/clipin aa12in
+aa12/clipin1 aa12in1
+aa12/clipin2 aa12in2
+aa12/bolt aa12bt

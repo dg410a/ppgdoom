@@ -1,0 +1,503 @@
+//Fonts
+
+
+graphic ppgfont0, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont0, 0,0 {}
+}
+
+graphic ppgfont1, 13, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont1, 0,0 {}
+}
+
+
+graphic ppgfont2, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont2, 0,0 {}
+}
+
+graphic ppgfont3, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont3, 0,0 {}
+}
+
+graphic ppgfont4, 18, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont4, 0,0 {}
+}
+
+graphic ppgfont5, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont5, 0,0 {}
+}
+
+graphic ppgfont6, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont6, 0,0 {}
+}
+
+graphic ppgfont7, 16, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont7, 0,0 {}
+}
+
+graphic ppgfont8, 20, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont8, 0,0 {}
+}
+
+graphic ppgfont9, 17, 15
+{
+	xscale 1
+	yscale 1
+	patch ppgfont9, 0,0 {}
+}
+
+//HUD
+
+graphic ppghlth, 227, 10
+{
+	xscale 1
+	yscale 1
+	patch ppghlth, 0,0 {}
+}
+
+graphic ppghlthe, 227, 10
+{
+	xscale 1
+	yscale 1
+	patch ppghlthe, 0,0 {}
+}
+
+graphic ppgarmor, 227, 10
+{
+	xscale 1
+	yscale 1
+	patch ppgarmor, 0,0 {}
+}
+
+graphic ppgammo, 162, 10
+{
+	xscale 1
+	yscale 1
+	patch ppgammo, 0,0 {}
+}
+
+graphic ppgenrgy, 162, 10
+{
+	xscale 1
+	yscale 1
+	patch ppgenrgy, 0,0 {}
+}
+
+graphic ppgammoe, 162, 10
+{
+	xscale 1
+	yscale 1
+	patch ppgammoe, 0,0 {}
+}
+
+graphic ppghlthb, 365, 224
+{
+	xscale 1
+	yscale 1
+	patch ppghlthb, 0,0 {}
+}
+
+graphic ppgammob, 361, 70
+{
+	xscale 1
+	yscale 1
+	patch ppgammob, 0,0 {}
+}
+
+//-------------
+// Weapon Icons
+//-------------
+
+//Superpowers
+
+graphic lsricon, 75, 38
+{
+	xscale 1
+	yscale 1
+	patch lsricon, 0,0 {}
+}
+
+graphic icbricon, 125, 38
+{
+	xscale 1
+	yscale 1
+	patch icbricon, 0,0 {}
+}
+
+graphic icebicon, 125, 38
+{
+	xscale 1
+	yscale 1
+	patch icebicon, 0,0 {}
+}
+
+graphic frbricon, 125, 38
+{
+	xscale 1
+	yscale 1
+	patch frbricon, 0,0 {}
+}
+
+graphic ibmbicon, 125, 38
+{
+	xscale 1
+	yscale 1
+	patch ibmbicon, 0,0 {}
+}
+
+// --------
+// Mugshots
+// --------
+
+//Blossom
+
+graphic BLSDEAD0, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSDEAD0, 0,0 {}
+}
+
+graphic BLSEVL0, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSEVL0, 0,0 {}
+}
+
+graphic BLSEVL1, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSEVL1, 0,0 {}
+}
+
+graphic BLSEVL2, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSEVL2, 0,0 {}
+}
+
+graphic BLSEVL3, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSEVL3, 0,0 {}
+}
+
+graphic BLSEVL4, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSEVL4, 0,0 {}
+}
+
+//graphic BLSGOD0, 287, 376
+//{
+//	xscale 2
+//	yscale 2
+//	patch BLSGOD0, 0,0 {}
+//}
+
+graphic BLSKILL0, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSKILL0, 0,0 {}
+}
+
+graphic BLSKILL1, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSKILL1, 0,0 {}
+}
+
+graphic BLSKILL2, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSKILL2, 0,0 {}
+}
+
+graphic BLSKILL3, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSKILL3, 0,0 {}
+}
+
+graphic BLSKILL4, 287, 376
+{
+	xscale 2
+	yscale 2
+	patch BLSKILL4, 0,0 {}
+}
+
+graphic BLSOUCH0, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSOUCH0, 0,0 {}
+}
+
+graphic BLSOUCH1, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSOUCH1, 0,0 {}
+}
+
+graphic BLSOUCH2, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSOUCH2, 0,0 {}
+}
+
+graphic BLSOUCH3, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSOUCH3, 0,0 {}
+}
+
+graphic BLSOUCH4, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSOUCH4, 0,0 {}
+}
+
+graphic BLSTL00, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTL00, 0,0 {}
+}
+
+graphic BLSTL10, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTL10, 0,0 {}
+}
+
+graphic BLSTL20, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTL20, 0,0 {}
+}
+
+graphic BLSTL30, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTL30, 0,0 {}
+}
+
+graphic BLSTL40, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTL40, 0,0 {}
+}
+
+graphic BLSTR00, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTR00, 0,0 {}
+}
+
+graphic BLSTR10, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTR10, 0,0 {}
+}
+
+graphic BLSTR20, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTR20, 0,0 {}
+}
+
+graphic BLSTR30, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTR30, 0,0 {}
+}
+
+graphic BLSTR40, 287, 388
+{
+	xscale 2
+	yscale 2
+	patch BLSTR40, 0,0 {}
+}
+
+graphic BLSST00, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST00, 0,0 {}
+}
+
+graphic BLSST01, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST01, 0,0 {}
+}
+
+graphic BLSST02, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST02, 0,0 {}
+}
+
+graphic BLSST10, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST10, 0,0 {}
+}
+
+graphic BLSST11, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST11, 0,0 {}
+}
+
+graphic BLSST12, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST12, 0,0 {}
+}
+
+graphic BLSST20, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST20, 0,0 {}
+}
+
+graphic BLSST21, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST21, 0,0 {}
+}
+
+graphic BLSST22, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST22, 0,0 {}
+}
+
+graphic BLSST30, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST30, 0,0 {}
+}
+
+graphic BLSST31, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST31, 0,0 {}
+}
+
+graphic BLSST32, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST32, 0,0 {}
+}
+
+graphic BLSST40, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST40, 0,0 {}
+}
+
+graphic BLSST41, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST41, 0,0 {}
+}
+
+graphic BLSST42, 287, 389
+{
+	xscale 2
+	yscale 2
+	patch BLSST42, 0,0 {}
+}
+
+/*
+define BLSDEAD0 40 56 //287 376
+define BLSEVL0 40 56 //287 376
+define BLSEVL1 40 56 //287 376
+define BLSEVL2 40 56 //287 376
+define BLSEVL3 40 56 //287 376
+define BLSEVL4 40 56 //287 376
+define BLSGOD0 40 56 //287 376
+define BLSQUAD0 40 56 //287 376
+define BLSKILL0 40 56 //287 376
+define BLSKILL1 40 56 //287 376
+define BLSKILL2 40 56 //287 376
+define BLSKILL3 40 56 //287 376
+define BLSKILL4 40 56 //287 376
+define BLSOUCH0 40 56 //287 376
+define BLSOUCH1 40 56 //287 376
+define BLSOUCH2 40 56 //287 376
+define BLSOUCH3 40 56 //287 376
+define BLSOUCH4 40 56 //287 376
+define BLSST00 40 56 //287 376
+define BLSST01 40 56 //287 376
+define BLSST10 40 56 //287 376
+define BLSST11 40 56 //287 376
+define BLSST20 40 56 //287 376
+define BLSST21 40 56 //287 376
+define BLSST30 40 56 //287 376
+define BLSST31 40 56 //287 376
+define BLSST40 40 56 //287 376
+define BLSST41 40 56 //287 376
+*/

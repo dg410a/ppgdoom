@@ -1,0 +1,20 @@
+#include "Decorate/Constants.AED"
+
+// Players
+
+#include "Decorate/Players/Blossom.txt"
+
+// Monsters
+
+#include "Decorate/Monsters/DoomMonsters.txt"
+
+// Weapons
+
+#include "Decorate/Weapons/Misc.txt"
+#include "Decorate/Weapons/Superpowers.txt"
+#include "Decorate/Weapons/PPGFists.txt"
+#include "Decorate/Weapons/Spawners.txt"
+#include "Decorate/Weapons/Glock18.txt"
+#include "Decorate/Weapons/PPGShotgun.txt"
+#include "Decorate/Weapons/M4A1.txt"
+#include "Decorate/Weapons/AA12.txt"

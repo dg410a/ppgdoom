@@ -1,0 +1,62 @@
+#library "ppg"
+#include "zcommon.acs"
+
+script "GunModeChecker" (void)
+{
+	SetResultValue(GetCVar("user_gunmode"));
+	terminate;
+}
+
+script "User1Refire" ENTER
+{
+	int buttonsa;
+	while(1) {
+		buttonsa = GetPlayerInput(-1, INPUT_BUTTONS); //For User1Refire
+		if(buttonsa & BT_USER1) {
+			GiveInventory("User1Refire",9999);
+			delay(1);
+		}
+		else {
+			TakeInventory("User1Refire",9999);
+			delay(1);
+		}
+	}
+}
+
+script "User1Rampage" ENTER
+{
+	int buttonsb;
+	int time = 0;
+	while(1) {
+		buttonsb = GetPlayerInput(-1, INPUT_BUTTONS); //For User1Refire
+		if(buttonsb & BT_USER1) {
+			if(time >= 70) {
+				SetMugShotState("Rampage");
+				delay(1);
+			}
+			time++;
+			delay(1);
+		}
+		else {
+			time = 0;
+			delay(1);
+		}
+	}
+}
+
+/*script "GunModeCheckerGameStart" ENTER
+{
+	if(GetCVar("user_gunmode") == 1) {
+		if(!CheckInventory("Glock18")) {
+			GiveInventory("Glock18",1);
+			GiveInventory("Clip",36);
+		}
+	}
+	terminate;
+}*/
+
+script "PlayerClassChecker" (void)
+{
+	SetResultValue(GetPlayerInfo(PlayerNumber(),PLAYERINFO_PLAYERCLASS));
+	terminate;
+}
