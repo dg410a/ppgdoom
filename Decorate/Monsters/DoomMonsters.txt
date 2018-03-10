@@ -1,26 +1,38 @@
-ACTOR PPGZombieMan : Zombieman replaces Zombieman
+ACTOR PPGZombieMan : Zombieman
 {
-//	DropItem "PPGClip" 160
 	DropItem "Glock18" 96
 	DropItem "PPGEnergy" 64 5
 }
 
-ACTOR PPGShotgunGuy : ShotgunGuy replaces ShotgunGuy
+ACTOR PPGZombieManNonGM : Zombieman
 {
-//	DropItem "PPGShell" 160
-	DropItem "PPGShotgun" 96
-	DropItem "PPGEnergy" 64 5
+	DropItem "PPGEnergy" 128 5
 }
 
-ACTOR PPGChaingunGuy : ChaingunGuy replaces ChaingunGuy
+ACTOR PPGShotgunGuy : ShotgunGuy
+{
+	DropItem "PPGShotgun" 96
+	DropItem "PPGEnergy" 64 10
+}
+
+ACTOR PPGShotgunGuyNonGM : ShotgunGuy
+{
+	DropItem "PPGEnergy" 128 10
+}
+
+ACTOR PPGChaingunGuy : ChaingunGuy
 {
 	DropItem "PPGClipBox" 96
-//	DropItem "M4A1Ammo" 160
 	DropItem "M4A1" 96
-	DropItem "PPGEnergy" 64 5
+	DropItem "PPGEnergy" 64 10
 }
 
-ACTOR PPGWolfensteinSS : WolfensteinSS replaces WolfensteinSS
+ACTOR PPGChaingunGuyNonGM : ChaingunGuy
+{
+	DropItem "PPGEnergy" 128 10
+}
+
+ACTOR PPGWolfensteinSS : WolfensteinSS
 {
 	DropItem "PPGClip" 160
 	DropItem "PPGClipBox" 96
@@ -28,9 +40,14 @@ ACTOR PPGWolfensteinSS : WolfensteinSS replaces WolfensteinSS
 	DropItem "PPGEnergy" 64 5
 }
 
+ACTOR PPGWolfensteinSSNonGM : WolfensteinSS
+{
+	DropItem "PPGEnergy" 128 5
+}
+
 ACTOR PPGImp : DoomImp replaces DoomImp
 {
-	DropItem "PPGEnergy" 64 5
+	DropItem "PPGEnergy" 64 10
 }
 
 ACTOR PPGDemon : Demon replaces Demon
