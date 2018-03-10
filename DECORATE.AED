@@ -7,6 +7,7 @@
 // Monsters
 
 #include "Decorate/Monsters/DoomMonsters.txt"
+#include "Decorate/Monsters/Spawners.AED"
 
 // Weapons
 
