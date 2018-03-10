@@ -14,5 +14,5 @@ There are some extra options with regards to this mod if you look under "PPG Opt
 
 - Gun Mode: Here, you can toggle the presence of usable guns. This is turned off by default.
 - Superpowers: There are buttons for toggling superpowers and using them. They are as follows:
-  - Next and previous superpowers (Z and X by default respectively)
+  - Next and previous superpowers (X and Z by default respectively)
   - Use superpower (I use the right mouse button)
