@@ -85,6 +85,7 @@ statusbar FullScreen, ForceScaled
 	DrawImage "ppgammob", 1100,620;
 	drawbar "ppgammo", "ppgammoe", Ammo1, horizontal, 1127, 661;
 	DrawNumber 3, PPGHudFont, White, Ammo1, fillzeros, 1294, 638;
+	DrawImage weaponicon, 1304,635;
 	
 	//Superpower Icons
 	DrawSwitchableImage "SP1Selected","null","lsricon",1330,36;

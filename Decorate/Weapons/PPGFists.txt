@@ -2,7 +2,7 @@
 ACTOR PPGFists : PPGWeapon
 {
 	Weapon.SelectionOrder 3700
-//   Inventory.Icon FISTS
+   Inventory.Icon FISTICON
    +NOAUTOFIRE
    +NOALERT
    +NOEXTREMEDEATH
