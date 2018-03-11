@@ -12,7 +12,7 @@ ACTOR PPGShotgun : PPGWeapon
 //	+NOAUTOFIRE
 	Weapon.SelectionOrder 1300
 	AttackSound "shotgun/fire"
-//	Inventory.Icon "shotgun"
+	Inventory.Icon "shoticon"
 	Inventory.PickupMessage "You got the Winchester 1887 Shotgun!"
 	Obituary "%k gave %o a taste of buckshot."
 	States

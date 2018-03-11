@@ -6,6 +6,7 @@ ACTOR M4A1 : PPGWeapon
    Weapon.AmmoGive1 30
    Weapon.SlotNumber 4
 	Weapon.SelectionOrder 700
+	Inventory.Icon "m4a1icon"
    AttackSound "m4a1/fire"
 	Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!"
 	Obituary "%o underestimated %k's 'little friend'."

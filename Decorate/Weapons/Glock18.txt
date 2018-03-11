@@ -5,7 +5,7 @@ ACTOR Glock18 : PPGWeapon
    Weapon.AmmoUse1 1
    Weapon.AmmoGive1 12
    AttackSound "glock/fire"
- //  Inventory.Icon "glock18"
+   Inventory.Icon "pisticon"
 	Weapon.SelectionOrder 1900
 	Weapon.SlotNumber 2
 	Inventory.PickupMessage "You got the Glock 18!"
