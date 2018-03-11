@@ -10,15 +10,55 @@ statusbar Normal, ForceScaled
 //	DrawImage weaponicon, -32, 80;
 	DrawKeyBar 6, vertical, 13, -8, 14;
 
-	//HUD
-	DrawImage "ppghlthb", 20, -180;
-	drawbar "ppghlth", "ppghealthe", Health, horizontal, 23, -157;
-	DrawNumber 3, PPGHudFont, White, Health, fillzeros, 75, -173;
-	drawbar "ppgarmor", "ppgarmore", Armor, horizontal, 206, -157;
-	DrawNumber 3, PPGHudFont, White, Armor, fillzeros, 250, -173;
+	//Health and Shields
+	DrawImage "ppghlthb", -170, 470;
+	drawbar "ppghlth", "ppghlthe", Health, horizontal, -63, 644;
+	DrawNumber 3, PPGHudFont, White, Health, fillzeros, -85, 642;
+	drawbar "ppgarmor", "ppghlthe", Armor, horizontal, -70, 665;
+	DrawNumber 3, PPGHudFont, White, Armor, fillzeros, -91, 662;
 	//Mug Shot
-	drawmugshot "BLS", 5, 120, -168;	
-	//Powerups
+	drawmugshot "BLS", 5, -75, 420;
+	
+	//Energy Bar
+	DrawImage "ppgammob", 1100,20;
+	drawbar "ppgenrgy", "ppgammoe", PPGEnergy, horizontal, 1127, 61;
+	DrawNumber 3, PPGHudFont, White, PPGEnergy, fillzeros, 1294, 38;
+	
+	//Ammo Bar
+	DrawImage "ppgammob", 1100,620;
+	drawbar "ppgammo", "ppgammoe", Ammo1, horizontal, 1127, 661;
+	DrawNumber 3, PPGHudFont, White, Ammo1, fillzeros, 1294, 638;
+	
+	//Superpower Icons
+	DrawSwitchableImage "SP1Selected","null","lsricon",1330,36;
+	
+	PlayerType Blossom {
+		DrawSwitchableImage "SP2Selected","null","icbricon",1315,36;
+		DrawSwitchableImage "SP3Selected","null","icebicon",1315,36;
+		DrawSwitchableImage "SP4Selected","null","frbricon",1315,36;
+		DrawSwitchableImage "SP5Selected","null","ibmbicon",1320,36;
+		DrawSwitchableImage "SP6Selected","null","lgtnicon",1330,36;
+		DrawSwitchableImage "SP7Selected","null","bfricon",1330,36;
+	}
+	
+	PlayerType Bubbles {
+		DrawSwitchableImage "SP2Selected","null","icbricon",1315,36;
+		DrawSwitchableImage "SP3Selected","null","icebicon",1315,36;
+		DrawSwitchableImage "SP4Selected","null","frbricon",1315,36;
+		DrawSwitchableImage "SP5Selected","null","ibmbicon",1320,36;
+		DrawSwitchableImage "SP6Selected","null","lgtnicon",1330,36;
+		DrawSwitchableImage "SP7Selected","null","bfricon",1330,36;
+	}
+	
+	PlayerType Buttercup {
+		DrawSwitchableImage "SP2Selected","null","icbricon",1315,36;
+		DrawSwitchableImage "SP3Selected","null","icebicon",1315,36;
+		DrawSwitchableImage "SP4Selected","null","frbricon",1315,36;
+		DrawSwitchableImage "SP5Selected","null","ibmbicon",1320,36;
+		DrawSwitchableImage "SP6Selected","null","lgtnicon",1330,36;
+		DrawSwitchableImage "SP7Selected","null","bfricon",1330,36;
+	}
+	
 }
 
 statusbar FullScreen, ForceScaled
