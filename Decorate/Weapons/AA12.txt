@@ -8,6 +8,7 @@ ACTOR AA12 : PPGWeapon
 	Weapon.SlotNumber 5
 	DONTHURTSHOOTER
 	AttackSound "aa12/fire"
+	Inventory.Icon "aa12icon"
 	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
 	Obituary "%o was pwned by %k's AA-12."
 	States
