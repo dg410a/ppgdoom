@@ -1,35 +1,35 @@
 ACTOR PPGZombieMan : Zombieman
 {
 	DropItem "Glock18" 96
-	DropItem "PPGEnergy" 64 5
+	DropItem "PPGEnergy" 64 4
 }
 
 ACTOR PPGZombieManNonGM : Zombieman
 {
-	DropItem "PPGEnergy" 128 5
+	DropItem "PPGEnergy" 128 8
 }
 
 ACTOR PPGShotgunGuy : ShotgunGuy
 {
 	DropItem "PPGShotgun" 96
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGShotgunGuyNonGM : ShotgunGuy
 {
-	DropItem "PPGEnergy" 128 10
+	DropItem "PPGEnergy" 128 16
 }
 
 ACTOR PPGChaingunGuy : ChaingunGuy
 {
 	DropItem "PPGClipBox" 96
 	DropItem "M4A1" 96
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGChaingunGuyNonGM : ChaingunGuy
 {
-	DropItem "PPGEnergy" 128 10
+	DropItem "PPGEnergy" 128 16
 }
 
 ACTOR PPGWolfensteinSS : WolfensteinSS
@@ -37,67 +37,67 @@ ACTOR PPGWolfensteinSS : WolfensteinSS
 	DropItem "PPGClip" 160
 	DropItem "PPGClipBox" 96
 	DropItem "M4A1Ammo" 160
-	DropItem "PPGEnergy" 64 5
+	DropItem "PPGEnergy" 64 4
 }
 
 ACTOR PPGWolfensteinSSNonGM : WolfensteinSS
 {
-	DropItem "PPGEnergy" 128 5
+	DropItem "PPGEnergy" 128 8
 }
 
 ACTOR PPGImp : DoomImp replaces DoomImp
 {
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGDemon : Demon replaces Demon
 {
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGSpectre : Spectre replaces Spectre
 {
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGLostSoul : LostSoul replaces LostSoul
 {
-	DropItem "PPGEnergy" 64 10
+	DropItem "PPGEnergy" 64 8
 }
 
 ACTOR PPGCacodemon : Cacodemon replaces Cacodemon
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGHellKnight : HellKnight replaces HellKnight
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGBaronofHell : BaronofHell replaces BaronofHell
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGArachnotron : Arachnotron replaces Arachnotron
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGRevenant : Revenant replaces Revenant
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGFatso : Fatso replaces Fatso
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGArchVile : ArchVile replaces ArchVile
 {
-	DropItem "PPGEnergy" 64 20
+	DropItem "PPGEnergy" 64 16
 }
 
 ACTOR PPGSpiderMastermind : SpiderMastermind replaces SpiderMastermind

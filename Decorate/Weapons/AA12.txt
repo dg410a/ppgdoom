@@ -79,7 +79,7 @@ ACTOR AA12Ammo : Ammo
 	Inventory.PickupMessage "Picked up a Frag-12 Ammo Drum."
 	Inventory.MaxAmount 100
 	Ammo.BackpackAmount 10
-	Ammo.BackpackMaxAmount 200
+	Ammo.BackpackMaxAmount 100
 	Inventory.Amount	20
 	Scale .5
 	States

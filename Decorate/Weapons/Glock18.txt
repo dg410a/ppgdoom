@@ -1,7 +1,7 @@
 
 ACTOR Glock18 : PPGWeapon
 {
-   Weapon.AmmoType1 "Clip"
+   Weapon.AmmoType1 "PPGClip"
    Weapon.AmmoUse1 1
    Weapon.AmmoGive1 12
    AttackSound "glock/fire"

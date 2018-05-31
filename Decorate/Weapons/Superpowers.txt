@@ -657,7 +657,7 @@ ACTOR BFRExtra : BFGExtra
 ACTOR PPGEnergy : Ammo replaces Cell
 {
    Inventory.PickupMessage "Picked up an energy orb (+20 Energy)."
-   Inventory.MaxAmount 300
+   Inventory.MaxAmount 600
    Inventory.Amount 20
    Ammo.BackpackAmount 20
    Ammo.BackpackMaxAmount 600

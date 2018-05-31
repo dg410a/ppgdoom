@@ -1,7 +1,7 @@
 
 ACTOR PPGShotgun : PPGWeapon
 {
-	Weapon.AmmoType		"Shell"
+	Weapon.AmmoType		"PPGShell"
 	Weapon.AmmoUse		1
 	Weapon.AmmoGive		8
 	Radius				12

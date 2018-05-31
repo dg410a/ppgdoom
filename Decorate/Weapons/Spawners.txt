@@ -361,13 +361,57 @@ ACTOR PPGRocketBoxDropper : PPGRocketBoxSpawner
 	}
 }
 
-ACTOR PPGClip : Clip { }
+ACTOR PPGClip : Ammo { 
+	//$Category ammunition
+	Inventory.PickupMessage "Picked up a 9mm clip."
+	Inventory.MaxAmount 300
+	Inventory.Amount	10
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 300
+	States
+	{
+	Spawn:
+		CLIP A -1
+		Loop
+	}
+}
 
-ACTOR PPGClipBox : ClipBox { Inventory.Amount 25 }
+ACTOR PPGClipBox : PPGClip { 
+	Inventory.PickupMessage "Picked up a box of 9mm ammo."
+	Inventory.Amount	25
+	States
+	{
+	Spawn:
+		AMMO A -1
+		Loop
+	}
+}
 
-ACTOR PPGShell : Shell { Inventory.Amount 1 }
+ACTOR PPGShell : Ammo { 
+	//$Category ammunition
+	Inventory.PickupMessage "Picked up a 12 gauge shotgun shell."
+	Inventory.MaxAmount 50
+	Inventory.Amount	1
+	Ammo.BackpackAmount 1
+	Ammo.BackpackMaxAmount 50
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Loop
+	}
+}
 
-ACTOR PPGShellBox : ShellBox { Inventory.Amount 10 }
+ACTOR PPGShellBox : PPGShell { 
+	Inventory.PickupMessage "Picked up a box of shotgun shells."
+	Inventory.Amount 10 
+	States
+	{
+	Spawn:
+		SBOX A -1
+		Loop
+	}
+}
 
 ACTOR PPGRocketAmmo : RocketAmmo {}
 
