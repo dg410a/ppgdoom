@@ -49,53 +49,63 @@ script "GunModeCheckerStart" ENTER
 	int ppgenergy = CheckInventory("PPGEnergy");
 	if(GetCVar("user_gunmode") == 1) {
 		if(!CheckInventory("GunModeInit")) {
-			if(!CheckInventory("Glock18")) {
+			if(CheckInventory("HaveSP1")) {
 				GiveInventory("Glock18",1);
 				GiveInventory("PPGClip",ppgenergy/2);
 				TakeInventory("PPGClip",12);
+				SetWeapon("Glock18");
 			}
 			if(CheckInventory("HaveSP2")) {
 				GiveInventory("PPGShotgun",1);
 				GiveInventory("PPGShell",ppgenergy/12);
 				TakeInventory("PPGShell",8);
+				SetWeapon("PPGShotgun");
 			}
 			if(CheckInventory("HaveSP3")) {
 				GiveInventory("PPGShotgun",1);
 				GiveInventory("PPGShell",ppgenergy/12);
 				TakeInventory("PPGShell",8);
+				SetWeapon("PPGShotgun");
 			}
 			if(CheckInventory("HaveSP4")) {
 				GiveInventory("M4A1",1);
 				GiveInventory("M4A1Ammo",ppgenergy/3);
 				TakeInventory("M4A1Ammo",30);
+				SetWeapon("M4A1");
 			}
 			if(CheckInventory("HaveSP5")) {
 				GiveInventory("AA12",1);
 				GiveInventory("AA12Ammo",ppgenergy/3);
 				TakeInventory("AA12Ammo",20);
+				SetWeapon("AA12");
 			}
 			GiveInventory("GunModeInit",1);
 		}
 		else {
-			if(!CheckInventory("Glock18")) {
+			if(CheckInventory("HaveSP1") && CheckInventory("FPGlock18") && !CheckInventory("Glock18")) {
 				GiveInventory("Glock18",1);
 				TakeInventory("PPGClip",12);
+				SetWeapon("Glock18");
 			}
-			if(CheckInventory("HaveSP2")) {
+			if(CheckInventory("HaveSP2") && CheckInventory("FPShotgun") && !CheckInventory("PPGShotgun")) {
 				GiveInventory("PPGShotgun",1);
 				TakeInventory("PPGShell",8);
+				SetWeapon("PPGShotgun");
 			}
-			if(CheckInventory("HaveSP3")) {
+			if(CheckInventory("HaveSP3") && CheckInventory("FPShotgun")&& !CheckInventory("PPGShotgun")) {
 				GiveInventory("PPGShotgun",1);
 				TakeInventory("PPGShell",8);
+				SetWeapon("PPGShotgun");
 			}
-			if(CheckInventory("HaveSP4")) {
+			if(CheckInventory("HaveSP4") && CheckInventory("FPM4A1")&& !CheckInventory("M4A1")) {
 				GiveInventory("M4A1",1);
 				TakeInventory("M4A1Ammo",30);
+				SetWeapon("M4A1");
 			}
-			if(CheckInventory("HaveSP5")) {
+			if(CheckInventory("HaveSP5") && CheckInventory("FPAA12")&& !CheckInventory("AA12")) {
 				GiveInventory("AA12",1);
 				TakeInventory("AA12Ammo",20);
+				SetWeapon("AA12");
 			}
 		}
 	}

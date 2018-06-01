@@ -1,6 +1,6 @@
 ACTOR PPGZombieMan : Zombieman
 {
-	DropItem "Glock18" 96
+	DropItem "PPGClip" 96
 	DropItem "PPGEnergy" 64 4
 }
 
@@ -11,7 +11,7 @@ ACTOR PPGZombieManNonGM : Zombieman
 
 ACTOR PPGShotgunGuy : ShotgunGuy
 {
-	DropItem "PPGShotgun" 96
+	DropItem "PPGShotgunDrop" 96
 	DropItem "PPGEnergy" 64 8
 }
 
@@ -23,7 +23,7 @@ ACTOR PPGShotgunGuyNonGM : ShotgunGuy
 ACTOR PPGChaingunGuy : ChaingunGuy
 {
 	DropItem "PPGClipBox" 96
-	DropItem "M4A1" 96
+	DropItem "M4A1Drop" 96
 	DropItem "PPGEnergy" 64 8
 }
 
@@ -36,7 +36,7 @@ ACTOR PPGWolfensteinSS : WolfensteinSS
 {
 	DropItem "PPGClip" 160
 	DropItem "PPGClipBox" 96
-	DropItem "M4A1Ammo" 160
+	DropItem "M4A1Ammo" 96
 	DropItem "PPGEnergy" 64 4
 }
 

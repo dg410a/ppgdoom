@@ -14,7 +14,7 @@ ACTOR PPGChainsawSpawner : CustomInventory replaces Chainsaw
 		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn")
 		Goto GunModeOff
 	GunModeOn:
-		TNT1 A 0 A_SpawnItemEx("Glock18",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_SpawnItemEx("Glock18Pickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
 		Goto End
 	GunModeOff:
 		TNT1 A 0 A_SpawnItemEx("PPGFistsUpgrade",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
@@ -41,7 +41,9 @@ ACTOR PPGShotgunSpawner : CustomInventory replaces Shotgun
 		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn")
 		Goto GunModeOff
 	GunModeOn:
-		TNT1 A 0 A_SpawnItemEx("PPGShotgun",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_SpawnItemEx("PPGShotgunPickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_Jump(255,"Superpower","End")
+	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower1",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
 		Goto End
 	GunModeOff:
@@ -68,7 +70,9 @@ ACTOR PPGSuperShotgunSpawner : CustomInventory replaces SuperShotgun
 		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn")
 		Goto GunModeOff
 	GunModeOn:
-		TNT1 A 0 A_SpawnItemEx("PPGShotgun",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_SpawnItemEx("PPGShotgunPickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_Jump(255,"Superpower","End")
+	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower2",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
 		Goto End
 	GunModeOff:
@@ -95,7 +99,9 @@ ACTOR PPGChaingunSpawner : CustomInventory replaces Chaingun
 		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn")
 		Goto GunModeOff
 	GunModeOn:
-		TNT1 A 0 A_SpawnItemEx("M4A1",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_SpawnItemEx("M4A1Pickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_Jump(255,"Superpower","End")
+	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower3",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
 		Goto End
 	GunModeOff:
@@ -122,7 +128,9 @@ ACTOR PPGRocketLauncherSpawner : CustomInventory replaces RocketLauncher
 		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn")
 		Goto GunModeOff
 	GunModeOn:
-		TNT1 A 0 A_SpawnItemEx("AA12",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_SpawnItemEx("AA12Pickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
+		TNT1 A 0 A_Jump(255,"Superpower","End")
+	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower4",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
 		Goto End
 	GunModeOff:
@@ -159,18 +167,6 @@ ACTOR PPGClipSpawner : CustomInventory replaces Clip
 	}
 }
 
-ACTOR PPGClipDropper : PPGClipSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergyClip",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("PPGClip",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
-	}
-}
-
 ACTOR PPGClipBoxSpawner : CustomInventory replaces ClipBox
 {
    const int PFlags = SXF_NOCHECKPOSITION|SXF_CLEARCALLERTID|SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS;
@@ -194,18 +190,6 @@ ACTOR PPGClipBoxSpawner : CustomInventory replaces ClipBox
 	End:
 		TNT1 A 1
 		Stop
-	}
-}
-
-ACTOR PPGClipBoxDropper : PPGClipBoxSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergyClipBox",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("M4A1Ammo",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
 	}
 }
 
@@ -235,18 +219,6 @@ ACTOR PPGShellSpawner : CustomInventory replaces Shell
 	}
 }
 
-ACTOR PPGShellDropper : PPGShellSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergy",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("PPGShell",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
-	}
-}
-
 ACTOR PPGShellBoxSpawner : CustomInventory replaces ShellBox
 {
    const int PFlags = SXF_NOCHECKPOSITION|SXF_CLEARCALLERTID|SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS;
@@ -270,18 +242,6 @@ ACTOR PPGShellBoxSpawner : CustomInventory replaces ShellBox
 	End:
 		TNT1 A 1
 		Stop
-	}
-}
-
-ACTOR PPGShellBoxDropper : PPGShellBoxSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergyBig",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("PPGShellBox",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
 	}
 }
 
@@ -311,18 +271,6 @@ ACTOR PPGRocketAmmoSpawner : CustomInventory replaces RocketAmmo
 	}
 }
 
-ACTOR PPGRocketAmmoDropper : PPGRocketAmmoSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergyRocketAmmo",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("PPGRocketAmmo",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
-	}
-}
-
 ACTOR PPGRocketBoxSpawner : CustomInventory replaces RocketBox
 {
    const int PFlags = SXF_NOCHECKPOSITION|SXF_CLEARCALLERTID|SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS;
@@ -346,18 +294,6 @@ ACTOR PPGRocketBoxSpawner : CustomInventory replaces RocketBox
 	End:
 		TNT1 A 1
 		Stop
-	}
-}
-
-ACTOR PPGRocketBoxDropper : PPGRocketBoxSpawner
-{
-	States
-	{
-	GunModeOn:
-		TNT1 A 0 A_Jump(128,2)
-		TNT1 A 0 A_SpawnItemEx("PPGEnergyRocketBox",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		TNT1 A 0 A_SpawnItemEx("AA12Ammo",0,0,0,0,0,0,random(0,359),PFlags,0,tid)
-		Goto End
 	}
 }
 
