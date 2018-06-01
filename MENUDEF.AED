@@ -1,3 +1,86 @@
+
+LISTMENU "MainMenu"
+{
+	IfGame(Doom, Chex)
+	{
+		StaticPatch 94, 2, "M_DOOM"
+		Position 97, 72
+		IfOption(ReadThis)
+		{
+			Position 97, 64
+		}
+	}
+	IfGame(Strife)
+	{
+		StaticPatch 84, 2, "M_STRIFE"
+		Position 97, 45
+	}
+	IfGame(Heretic)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 40, 10, "M_SKL01"
+		StaticPatch 232, 10, "M_SKL00"
+		Position 110, 56
+	}
+	IfGame(Hexen)
+	{
+		StaticPatch 88, 0, "M_HTIC"
+		StaticPatch 37, 80, "FBULB0"
+		StaticPatch 278, 80, "FBULA0"
+		Position 110, 56
+	}
+	
+	IfGame(Doom, Strife, Chex)
+	{
+		PatchItem "M_NGAME", "n", "GunModeMenu" //"PlayerclassMenu"
+		ifOption(SwapMenu)
+		{
+			PatchItem "M_LOADG", "l", "LoadGameMenu"
+			PatchItem "M_SAVEG", "s", "SaveGameMenu"
+			PatchItem "M_OPTION","o", "OptionsMenu"
+		}
+		else
+		{
+			PatchItem "M_OPTION","o", "OptionsMenu"
+			PatchItem "M_LOADG", "l", "LoadGameMenu"
+			PatchItem "M_SAVEG", "s", "SaveGameMenu"
+		}
+		ifOption(ReadThis)
+		{
+			PatchItem "M_RDTHIS","r", "ReadThisMenu"
+		}
+		PatchItem "M_QUITG", "q", "QuitMenu"
+	}
+	
+	IfGame(Heretic, Hexen)
+	{
+		TextItem "$MNU_NEWGAME", "n", "GunModeMenu" //"PlayerclassMenu"
+		TextItem "$MNU_OPTIONS", "o", "OptionsMenu"
+		TextItem "$MNU_GAMEFILES", "g", "GameFilesMenu"
+		TextItem "$MNU_INFO", "i", "ReadThisMenu"
+		TextItem "$MNU_QUITGAME", "q", "QuitMenu"
+	}
+}
+
+OptionMenu "GunModeMenu"
+{
+	Title "GUN MODE"
+	StaticText " "
+	StaticText "This feature allows the user to toggle the use"
+	StaticText "of guns in the game as the name suggests."
+	StaticText " "
+	StaticText "Set the option to on or off as desired,"
+	StaticText "then click Continue to proceed."
+	StaticText " "
+	StaticText "WARNING: This mode enabled is NOT recommended for"
+	StaticText "minors or for the easily offended, especially"
+	StaticText "for the sake of the original show. And as"
+	StaticText "such, it is turned off by default."
+	StaticText " "
+	Option "Gun Mode",					"user_GunMode",		"OnOff"
+	SubMenu "Continue","Playerclassmenu"
+}
+
 AddOptionMenu "OptionsMenu"
 {
 	StaticText ""
@@ -15,12 +98,14 @@ OptionMenu "PPGOptions"
 	StaticText " "
 	StaticText "Special Options"
 	StaticText " "
-	StaticText "The following option is designed for players with a"
-	StaticText "peace of mind. For the sake of the original show,"
-	StaticText "players can adjust it to toggle the presence of"
-	StaticText "usable guns. This is turned off by default. Changes" 
-	StaticText "will only take effect after entering a new level or"
-	StaticText "starting a new game."
+	StaticText "The following option allows the user to"
+	StaticText "toggle the use of guns in the game as"
+	StaticText "the name suggests."
+	StaticText " "
+	StaticText "WARNING: This mode enabled is NOT recommended for"
+	StaticText "minors or for the easily offended, especially"
+	StaticText "for the sake of the original show. And as"
+	StaticText "such, it is turned off by default."
 	StaticText " "
 	Option "Gun Mode",					"user_GunMode",		"OnOff"
 }
