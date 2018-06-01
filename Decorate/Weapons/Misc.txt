@@ -1,5 +1,5 @@
 
-ACTOR GunModeChecker : Inventory
+ACTOR GunModeInit : Inventory
 { +UNDROPPABLE Inventory.MaxAmount 1 }
 
 ACTOR User1Refire : Inventory
