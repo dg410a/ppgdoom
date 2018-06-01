@@ -11,8 +11,6 @@ ACTOR PPGSuperpower1 : CustomInventory
 		SPWR A -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBreath")
@@ -41,8 +39,6 @@ ACTOR PPGSuperpower2 : CustomInventory
 		SPWR B -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBeam")
@@ -71,8 +67,6 @@ ACTOR PPGSuperpower3 : CustomInventory
 		SPWR C -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGFireBreath")
@@ -98,8 +92,6 @@ ACTOR PPGSuperpower4 : CustomInventory
 		SPWR D -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBomb")
@@ -125,8 +117,6 @@ ACTOR PPGSuperpower5 : CustomInventory replaces PlasmaRifle
 		SPWR E -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGLightningBolt")
@@ -153,8 +143,6 @@ ACTOR PPGSuperpower6 : CustomInventory replaces BFG9000
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGBFR")
@@ -182,8 +170,6 @@ ACTOR PPGIceBreath : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("IceBreath",1,2)
@@ -210,8 +196,6 @@ ACTOR PPGIceBeam : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("IceBeam",1,2)
@@ -238,8 +222,6 @@ ACTOR PPGFireBreath : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("FireBreath",1,2)
@@ -266,8 +248,6 @@ ACTOR PPGIceBomb : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("IceBomb",1,2)
@@ -294,8 +274,6 @@ ACTOR PPGLightningBolt : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("LightningBolt",1,2)
@@ -322,8 +300,6 @@ ACTOR PPGBFR : CustomInventory
 		SPWR F -1
 		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Backpack",1,2)
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",300,"PickupFail")
 		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail")
 	PickupTrue:
 		TNT1 A 0 A_JumpIfInventory("BFR",1,2)
