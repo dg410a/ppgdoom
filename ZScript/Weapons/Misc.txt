@@ -1,0 +1,1128 @@
+
+Class GunModeInit : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
+Class User1Refire : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
+Class PPGWeapon : Weapon
+{
+	Default {
+		Weapon.BobStyle "InverseSmooth";
+		Weapon.BobSpeed 2.5;
+	}
+   States
+   {
+   Select:
+   Deselect:
+   Ready:
+	  "####" "#" 1 A_WeaponReady(WRF_ALLOWUSER1);
+	  Loop;
+   Fire:
+      // Superpowers
+   User1:
+	  "####" "#" 0 A_JumpIfInventory("SP2Selected",1,"SP2");
+      "####" "#" 0 A_JumpIfInventory("SP3Selected",1,"SP3");
+	  "####" "#" 0 A_JumpIfInventory("SP4Selected",1,"SP4");
+	  "####" "#" 0 A_JumpIfInventory("SP5Selected",1,"SP5");
+	  "####" "#" 0 A_JumpIfInventory("SP6Selected",1,"SP6");
+	  "####" "#" 0 A_JumpIfInventory("SP7Selected",1,"SP7");
+
+// Laser Eyes
+   SP1:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",1,"FireLasers");
+	  Goto Ready;
+   FireLasers:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GunFlash("LaserEyes");
+	  Goto Ready;
+   LaserEyes:
+	  TNT1 A 0 A_GiveInventory("SPInUse",1);
+	  TNT1 A 0 A_SetBlend("75 00 00",.8,5);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",1);
+	  TNT1 A 0 A_RailAttack(3,-2,0,"none","none",RGF_SILENT,0,"none",0,0,0,0,1.5,0.0,"LaserTrail",9);
+	  TNT1 A 0 A_RailAttack(3,2,0,"none","none",RGF_SILENT,0,"none",0,0,0,0,1.5,0.0,"LaserTrail",9);
+	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 0 A_PlaySound("laser/fire",5);
+	  TNT1 A 11;
+	  TNT1 A 0; // A_Refire("LaserEyes")
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  Stop;
+	  
+//Superpower 2
+   SP2:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP2A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireIceBreath");
+	  Goto Ready;
+   FireIceBreath:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GunFlash("IceBreath");
+	  Goto Ready;
+   IceBreath:
+	  TNT1 A 0 A_GiveInventory("SPInUse",1);
+	  TNT1 A 0 A_PlaySound("icebreath/fire",5);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",2);
+	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 3 A_FireCustomMissile("IceSpread",0,0,0);
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  Stop;
+	 
+//Superpower 3
+   SP3:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP3A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",10,"FireIceBeam");
+	  Goto Ready;
+   FireIceBeam:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GunFlash("IceBeam");
+	  Goto Ready;
+   IceBeam:
+	  TNT1 A 0 A_GiveInventory("SPInUse",1);
+	  TNT1 A 0 A_SetBlend("00 00 75",.8,5);
+	  TNT1 A 0 A_PlaySound("icebeam/fire",5);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",10);
+	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 29 A_RailAttack(90,0,0,"none","none",RGF_SILENT,0,"IcePuff",0,0,0,0,1.5,0.0,"IceBeamTrail",3);
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  Stop;
+	 
+//Superpower 4
+   SP4:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP4A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireFireBreath");
+	  Goto Ready;
+   FireFireBreath:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GunFlash("FireBreath");
+	  Goto Ready;
+   FireBreath:
+	  TNT1 A 0 A_GiveInventory("SPInUse",1);
+	  TNT1 A 0 A_PlaySound("firebreath/fire",5);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",2);
+	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 3 A_FireCustomMissile("FireSpread",0,0,0);
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  Stop;
+	  
+//Superpower 5
+   SP5:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP5A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",20,"FireIceBomb");
+	  Goto Ready;
+   FireIceBomb:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GunFlash("IceBomb");
+	  Goto Ready;
+   IceBomb:
+	  TNT1 A 8 A_GiveInventory("SPInUse",1);
+//	  TNT1 A 0 A_PlaySound("icebomb/fire",5)
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",20);
+	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 12 A_FireCustomMissile("IceBombMissile",0,0,0);
+	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  Stop;
+	  
+//Superpower 6
+   SP6:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP6A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireLightningBolt");
+	  Goto Ready;
+   FireLightningBolt:
+//	  TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"LBGunModeOn")
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+   FLBHolster:
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,128);
+   FLBFire:
+	  TNT1 A 0 A_GunFlash("LightningBolt");
+	  TNT1 A 1 Offset(0,128);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,32);
+	  "####" "#" 1 Offset(-3,30);
+	  "####" "#" 1 Offset(-6,27);
+	  "####" "#" 1 Offset(-9,24);
+	  "####" "#" 1 Offset(4,29);
+	  "####" "#" 1 Offset(2,31);
+	  "####" "#" 5 Offset(0,32);
+      "####" "#" 1;
+	  "####" "#" 0 A_GiveInventory("SPRefire",1);
+   FLBLoop:
+      "####" "#" 2;
+	  "####" "#" 0 A_JumpIfInventory("SPRefire",1,"FLBLoop");
+   FLBEnd:
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,128) A_TakeInventory("SPInUse",9999);
+   FLBLower:
+	  "####" "#" 1 A_Lower;
+	  "####" "#" 0 A_Lower;
+	  Goto Ready;
+   LightningBolt:
+	  LGTN A 10;
+	  LGTN B 7;
+	  LGTN C 1;
+	  TNT1 A 0 A_GiveInventory("SPInUse",1);
+//	  TNT1 A 0 A_PlaySound("icebomb/fire",5)
+	LBLoop:
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",2);
+	  TNT1 A 0 A_AlertMonsters;
+	  LGTN D 2 A_RailAttack(17,-5,0,"none","66 ff ff",RGF_SILENT|RGF_NOPIERCING,0,"none",0,0,0,0,0.0,0.0,"none",0);
+	  TNT1 A 0 A_JumpIfInventory("PPGEnergy",2,"LBRefire");
+	  Goto LBEnd;
+	LBRefire:
+	  TNT1 A 0 A_JumpIfInventory("User1Refire",1,"LBLoop");
+	LBEnd:
+	  "####" "#" 0 A_TakeInventory("SPRefire",9999);
+	  LGTN A 6;
+	  Stop;
+	  
+//Superpower 7
+   SP7:
+//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
+//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+   SP7A:
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",40,"FireBFR");
+	  Goto Ready;
+   FireBFR:
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
+	  "####" "#" 0 A_GiveInventory("SPInUse",1);
+//	  TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"LBGunModeOn")
+   FBHolster:
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,128);
+   FBFire:
+	  TNT1 A 0 A_GunFlash("BFR");
+	  TNT1 A 1 Offset(0,128);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,32);
+      "####" "#" 41;
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,112);
+	  "####" "#" 1 Offset(0,128) A_TakeInventory("SPInUse",9999);
+   FBLower:
+	  "####" "#" 1 A_Lower;
+	  "####" "#" 0 A_Lower;
+	  Goto Ready;
+   BFR:
+	  TNT1 A 0 A_AlertMonsters;
+	  FISG A 7;
+	  BFRG ABCDE 1;
+	  TNT1 A 0 A_PlaySound("bfr/fire");
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA1",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA2",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA3",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA4",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA5",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA6",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA7",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA8",6,0,0);
+	  BFRG FF 1 A_SpawnItem("BFRBallChargeA9",6,0,0);
+	  BFRG GH 1 A_SpawnItem("BFRBallChargeA9",6,0,0);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",40);
+	  BFRG I 12 A_FireCustomMissile("BFRBall",0,0,0);
+	  BFRG JKLM 1;
+	  FISG A 7;
+	  Stop;
+	  
+   }
+}
+
+Class SPRefire : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SPInUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP1 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP2 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP3 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP4 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP5 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP6 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class HaveSP7 : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+
+Class SP1Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP2Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP3Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP4Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP5Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP6Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP7Selected : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+
+Class ClearSPSwitch : CustomInventory
+{
+	Default { +INVENTORY.ALWAYSPICKUP }
+	States
+	{
+	Pickup:
+		TNT1 A 0 A_TakeInventory("SP1Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP2Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP3Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP4Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP5Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP6Selected",9999);
+		TNT1 A 0 A_TakeInventory("SP7Selected",9999);
+		Stop;
+	}
+}
+
+Class SPSwitchNext : CustomInventory
+{
+	Default { +INVENTORY.ALWAYSPICKUP }
+	States
+	{
+	Pickup:
+	
+// SP1 Selected
+	
+	SP1:
+		TNT1 A 0 A_JumpIfInventory("SP1Selected",1,1);
+		Goto SP2;
+	SP1Selected:
+	
+	CheckSP2A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP3A;
+	SelectSP2A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP3A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP4A;
+	SelectSP3A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP4A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP5A;
+	SelectSP4A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP5A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP6A;
+	SelectSP5A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP6A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP7A;
+	SelectSP6A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP7A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto End;
+	SelectSP7A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+// SP2 Selected
+
+	SP2:
+		TNT1 A 0 A_JumpIfInventory("SP2Selected",1,1);
+		Goto SP3;
+	SP2Selected:
+	
+	CheckSP3B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP4B;
+	SelectSP3B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP4B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP5B;
+	SelectSP4B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP5B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP6B;
+	SelectSP5B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP6B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP7B;
+	SelectSP6B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP7B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP1B;
+	SelectSP7B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP1B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto End;
+	SelectSP1B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+// SP3 Selected
+
+	SP3:
+		TNT1 A 0 A_JumpIfInventory("SP3Selected",1,1);
+		Goto SP4;
+	SP3Selected:
+	
+	CheckSP4C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP5C;
+	SelectSP4C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP5C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP6C;
+	SelectSP5C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP6C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP7C;
+	SelectSP6C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP7C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP1C;
+	SelectSP7C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP1C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP2C;
+	SelectSP1C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP2C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto End;
+	SelectSP2C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+// SP4 Selected
+
+	SP4:
+		TNT1 A 0 A_JumpIfInventory("SP4Selected",1,1);
+		Goto SP5;
+	SP4Selected:
+	
+	CheckSP5D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP6D;
+	SelectSP5D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP6D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP7D;
+	SelectSP6D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP7D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP1D;
+	SelectSP7D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP1D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP2D;
+	SelectSP1D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP2D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP3D;
+	SelectSP2D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP3D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto End;
+	SelectSP3D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+
+// SP5 Selected
+
+	SP5:
+		TNT1 A 0 A_JumpIfInventory("SP5Selected",1,1);
+		Goto SP6;
+	SP5Selected:
+	
+	CheckSP6E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP7E;
+	SelectSP6E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP7E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP1E;
+	SelectSP7E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP1E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP2E;
+	SelectSP1E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP2E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP3E;
+	SelectSP2E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP3E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP4E;
+	SelectSP3E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP4E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto End;
+	SelectSP4E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+// SP6 Selected
+
+	SP6:
+		TNT1 A 0 A_JumpIfInventory("SP6Selected",1,1);
+		Goto SP7;
+	SP6Selected:
+	
+	CheckSP7F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP1F;
+	SelectSP7F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP1F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP2F;
+	SelectSP1F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP2F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP3F;
+	SelectSP2F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP3F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP4F;
+	SelectSP3F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+
+	CheckSP4F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP5F;
+	SelectSP4F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP5F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto End;
+	SelectSP5F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+// SP7 Selected
+
+	SP7:
+		TNT1 A 0 A_JumpIfInventory("SP7Selected",1,1);
+		Goto End;
+	SP7Selected:
+	
+	CheckSP1G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP2G;
+	SelectSP1G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP2G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP3G;
+	SelectSP2G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP3G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP4G;
+	SelectSP3G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP4G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP5G;
+	SelectSP4G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP5G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP6G;
+	SelectSP5G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP6G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto End;
+	SelectSP6G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+	End:
+		TNT1 A 0;
+		Stop;
+	}
+}
+
+Class SPSwitchPrev : CustomInventory
+{
+	Default { +INVENTORY.ALWAYSPICKUP }
+	States
+	{
+	Pickup:
+	
+// SP1 Selected
+	
+	SP1:
+		TNT1 A 0 A_JumpIfInventory("SP1Selected",1,1);
+		Goto SP2;
+	SP1Selected:
+	
+	CheckSP7A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP6A;
+	SelectSP7A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP6A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP5A;
+	SelectSP6A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP5A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP4A;
+	SelectSP5A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP4A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP3A;
+	SelectSP4A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP3A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP2A;
+	SelectSP3A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP2A:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto End;
+	SelectSP2A:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+// SP2 Selected
+
+	SP2:
+		TNT1 A 0 A_JumpIfInventory("SP2Selected",1,1);
+		Goto SP3;
+	SP2Selected:
+	
+	CheckSP1B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP7B;
+	SelectSP1B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP7B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP6B;
+	SelectSP7B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP6B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP5B;
+	SelectSP6B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP5B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP4B;
+	SelectSP5B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP4B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP3B;
+	SelectSP4B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP3B:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto End;
+	SelectSP3B:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+// SP3 Selected
+
+	SP3:
+		TNT1 A 0 A_JumpIfInventory("SP3Selected",1,1);
+		Goto SP4;
+	SP3Selected:
+	
+	CheckSP2C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP1C;
+	SelectSP2C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP1C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP7C;
+	SelectSP1C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP7C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP6C;
+	SelectSP7C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP6C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP5C;
+	SelectSP6C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP5C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP4C;
+	SelectSP5C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP4C:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto End;
+	SelectSP4C:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+// SP4 Selected
+
+	SP4:
+		TNT1 A 0 A_JumpIfInventory("SP4Selected",1,1);
+		Goto SP5;
+	SP4Selected:
+	
+	CheckSP3D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP2D;
+	SelectSP3D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP2D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP1D;
+	SelectSP2D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP1D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP7D;
+	SelectSP1D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP7D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP6D;
+	SelectSP7D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP6D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP5D;
+	SelectSP6D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP5D:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto End;
+	SelectSP5D:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+
+// SP5 Selected
+
+	SP5:
+		TNT1 A 0 A_JumpIfInventory("SP5Selected",1,1);
+		Goto SP6;
+	SP5Selected:
+	
+	CheckSP4E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP3E;
+	SelectSP4E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP3E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP2E;
+	SelectSP3E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP2E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP1E;
+	SelectSP2E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP1E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP7E;
+	SelectSP1E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP7E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto CheckSP6E;
+	SelectSP7E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+	CheckSP6E:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto End;
+	SelectSP6E:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+// SP6 Selected
+
+	SP6:
+		TNT1 A 0 A_JumpIfInventory("SP6Selected",1,1);
+		Goto SP7;
+	SP6Selected:
+	
+	CheckSP5F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP4F;
+	SelectSP5F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP4F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP3F;
+	SelectSP4F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP3F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP2F;
+	SelectSP3F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP2F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP1F;
+	SelectSP2F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP1F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto CheckSP7F;
+	SelectSP1F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+		
+	CheckSP7F:
+		TNT1 A 0 A_JumpIfInventory("HaveSP7",1,1);
+		Goto End;
+	SelectSP7F:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP7Selected",1);
+		Goto End;
+		
+// SP7 Selected
+
+	SP7:
+		TNT1 A 0 A_JumpIfInventory("SP7Selected",1,1);
+		Goto End;
+	SP7Selected:
+	
+	CheckSP6G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP6",1,1);
+		Goto CheckSP5G;
+	SelectSP6G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP6Selected",1);
+		Goto End;
+		
+	CheckSP5G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP5",1,1);
+		Goto CheckSP4G;
+	SelectSP5G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP5Selected",1);
+		Goto End;
+		
+	CheckSP4G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP4",1,1);
+		Goto CheckSP3G;
+	SelectSP4G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP4Selected",1);
+		Goto End;
+		
+	CheckSP3G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP3",1,1);
+		Goto CheckSP2G;
+	SelectSP3G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP3Selected",1);
+		Goto End;
+		
+	CheckSP2G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP2",1,1);
+		Goto CheckSP1G;
+	SelectSP2G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP2Selected",1);
+		Goto End;
+		
+	CheckSP1G:
+		TNT1 A 0 A_JumpIfInventory("HaveSP1",1,1);
+		Goto End;
+	SelectSP1G:
+		TNT1 A 0 A_GiveInventory("ClearSPSwitch");
+		TNT1 A 0 A_GiveInventory("SP1Selected",1);
+		Goto End;
+	End:
+		TNT1 A 0;
+		Stop;
+	}
+}
+

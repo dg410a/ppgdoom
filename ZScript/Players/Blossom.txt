@@ -1,0 +1,92 @@
+
+Class Blossom : PlayerPawn
+{
+	Default {
+		Speed 1;
+		Health 100;
+		Radius 16;
+		Height 56;
+		Mass 100;
+		PainChance 255;
+		Player.MaxHealth 100;
+		Player.ColorRange 176, 176;
+		Player.DisplayName "Blossom Utonium";
+		Player.CrouchSprite "PLYC";
+		Player.Face "BLS";
+		Player.SoundClass "BLS";
+		Player.StartItem "PPGFists";
+		Player.StartItem "PPGEnergy",50;
+		Player.StartItem "HaveSP1",1;
+		Player.StartItem "SP1Selected",1;
+		Player.StartItem "LaserEyes";
+		Player.WeaponSlot 1, "PPGFists";
+//  	Player.WeaponSlot 2, "Glock17"
+// 	 	Player.WeaponSlot 3, "AA12"
+//  	Player.WeaponSlot 4, "M4A1"
+
+		/*
+		Abilities:
+		----------
+		The most balanced Powerpuff Girl in the game
+		
+		Skill Moves:
+		------------
+		1: Laser Eyes (Standard)
+		2: Ice Breath (Uses 2 energy)
+		3: Fire Breath (Uses 3 energy)
+		4: Ice Bomb (Uses 10 energy)
+		5: Lighting Bolt (Uses 3 energy)
+		6: Bio Force Rosa (Uses 40 energy)
+		7: Triple Lasers (Uses 10 energy)
+		*/
+	}
+	States
+	{
+	Spawn:
+//		PLAY A 0 A_TakeInventory("IsDead",1)
+//		TNT1 A 0 A_TakeInventory("IsMoving",1)
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 SetPlayerProperty(0,0,1)
+		PLAY A 1;
+		Goto Spawn; //+2
+	See:
+//		PLAY A 0 A_TakeInventory("IsDead",1)
+//		TNT1 A 0 A_GiveInventory("IsMoving",1)
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 A_SpawnItem("PlayerStep",0,1)
+		PLAY AB 6;
+//		TNT1 A 0 A_SpawnItem("PlayerStep",0,1)
+		PLAY CD 6;
+		goto Spawn;
+	Missile:
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 SetPlayerProperty(0,0,1)
+		PLAY E 12;
+		Goto Spawn;
+	Melee:
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 SetPlayerProperty(0,0,1)
+		PLAY F 6 BRIGHT;
+		Goto Missile;
+	Pain:
+		TNT1 G 0 A_SetBlend("20 00 00",0.7,6);
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 SetPlayerProperty(0,0,1)
+		PLAY G 3;
+		PLAY G 3 A_Pain;
+		Goto Spawn;
+	Death:
+		TNT1 G 0 A_SetBlend("20 00 00",0.7,6);
+//		TNT1 A 0 SetPlayerProperty(0,1,2)
+//		TNT1 A 0 A_GiveInventory("IsDead",1)
+//		TNT1 A 0 SetPlayerProperty(0,0,1)
+      		PLAY H 10 A_PlayerScream;
+      		PLAY I 10;
+ 	        PLAY J 10 A_NoBlocking;
+ 	        PLAY K 10;
+ 	        PLAY L 10; //A_PlaySound("body/impact")
+ 	        PLAY M 10;
+      		PLAY N -1;
+		Stop;
+	}
+}

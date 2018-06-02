@@ -1,0 +1,119 @@
+Class PPGZombieManSpawner : CustomInventory replaces Zombieman
+{
+	const MFlags = SXF_SETMASTER|SXF_NOCHECKPOSITION|SXF_TRANSFERAMBUSHFLAG|SXF_CLEARCALLERTID|
+							SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS|
+							SXF_ISTRACER;
+	Default {
+		+INVENTORY.ALWAYSPICKUP
+		+INVENTORY.QUIET
+		-COUNTITEM
+		+NOTELESTOMP
+		+NOTONAUTOMAP
+		RenderStyle "None";
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn");
+		Goto GunModeOff;
+	GunModeOn:
+		TNT1 A 0 A_SpawnItemEx("PPGZombieMan",0,0,0,0,0,0,0,MFlags,0,tid);
+		Goto End;
+	GunModeOff:
+		TNT1 A 0 A_SpawnItemEx("PPGZombieManNonGM",0,0,0,0,0,0,0,MFlags,0,tid);
+	End:
+		TNT1 A 1;
+		Stop;
+	}
+}
+
+Class PPGShotgunGuySpawner : CustomInventory replaces ShotgunGuy
+{
+	const MFlags = SXF_SETMASTER|SXF_NOCHECKPOSITION|SXF_TRANSFERAMBUSHFLAG|SXF_CLEARCALLERTID|
+							SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS|
+							SXF_ISTRACER;
+	Default {
+		+INVENTORY.ALWAYSPICKUP
+		+INVENTORY.QUIET
+		-COUNTITEM
+		+NOTELESTOMP
+		+NOTONAUTOMAP
+		RenderStyle "None";
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn");
+		Goto GunModeOff;
+	GunModeOn:
+		TNT1 A 0 A_SpawnItemEx("PPGShotgunGuy",0,0,0,0,0,0,0,MFlags,0,tid);
+		Goto End;
+	GunModeOff:
+		TNT1 A 0 A_SpawnItemEx("PPGShotgunGuyNonGM",0,0,0,0,0,0,0,MFlags,0,tid);
+	End:
+		TNT1 A 1;
+		Stop;
+	}
+}
+
+Class PPGChaingunGuySpawner : CustomInventory replaces ChaingunGuy
+{
+	const MFlags = SXF_SETMASTER|SXF_NOCHECKPOSITION|SXF_TRANSFERAMBUSHFLAG|SXF_CLEARCALLERTID|
+							SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS|
+							SXF_ISTRACER;
+	Default {
+		+INVENTORY.ALWAYSPICKUP
+		+INVENTORY.QUIET
+		-COUNTITEM
+		+NOTELESTOMP
+		+NOTONAUTOMAP
+		RenderStyle "None";
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn");
+		Goto GunModeOff;
+	GunModeOn:
+		TNT1 A 0 A_SpawnItemEx("PPGChaingunGuy",0,0,0,0,0,0,0,MFlags,0,tid);
+		Goto End;
+	GunModeOff:
+		TNT1 A 0 A_SpawnItemEx("PPGChaingunGuyNonGM",0,0,0,0,0,0,0,MFlags,0,tid);
+	End:
+		TNT1 A 1;
+		Stop;
+	}
+}
+
+Class PPGWolfensteinSSSpawner : CustomInventory replaces WolfensteinSS
+{
+	const MFlags = SXF_SETMASTER|SXF_NOCHECKPOSITION|SXF_TRANSFERAMBUSHFLAG|SXF_CLEARCALLERTID|
+							SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS|
+							SXF_ISTRACER;
+	Default {
+		+INVENTORY.ALWAYSPICKUP
+		+INVENTORY.QUIET
+		-COUNTITEM
+		+NOTELESTOMP
+		+NOTONAUTOMAP
+		RenderStyle "None";
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"GunModeOn");
+		Goto GunModeOff;
+	GunModeOn:
+		TNT1 A 0 A_SpawnItemEx("PPGWolfensteinSS",0,0,0,0,0,0,0,MFlags,0,tid);
+		Goto End;
+	GunModeOff:
+		TNT1 A 0 A_SpawnItemEx("PPGWolfensteinSSNonGM",0,0,0,0,0,0,0,MFlags,0,tid);
+	End:
+		TNT1 A 1;
+		Stop;
+	}
+}
