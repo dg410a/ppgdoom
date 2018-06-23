@@ -73,7 +73,7 @@ Class M4A1 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(M4A1F,"Null");
 			A_Overlay(M4A1N,"Null");
-			A_PlaySound("m4a1/holster");
+			A_PlaySound("m4a1/holster",CHAN_AUTO);
 		}
 	Lower:
 		TNT1 A 0 { 
@@ -91,7 +91,7 @@ Class M4A1 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(M4A1N,"M4A1Ready");
 			A_OverlayFlags(M4A1N,PPGWeapMove,true);
-			A_PlaySound("m4a1/raise");
+			A_PlaySound("m4a1/raise",CHAN_AUTO);
 		}
 	Raise:
 		TNT1 A 0 { 
@@ -238,7 +238,7 @@ Class M4A1 : PPGWeapon
 		}
 	  M4CF A 1 BRIGHT Offset(2,2) {
 			A_FireBullets(2,1,-1,8,"BulletPuff",1,1920);
-			A_PlayWeaponSound("m4a1/fire");
+			A_PlaySound("m4a1/fire",CHAN_WEAPON);
 		}
       M4CF B 1 BRIGHT Offset(4,4) A_Light2();
       M4CG A 1 Offset(2,2) {
@@ -259,7 +259,7 @@ Class M4A1 : PPGWeapon
 		}
 	  M4CF A 1 BRIGHT Offset(2,2) {
 			A_FireBullets(4,2,-1,8,"BulletPuff",1,1920);
-			A_PlayWeaponSound("m4a1/fire");
+			A_PlaySound("m4a1/fire",CHAN_WEAPON);
 		}
       M4CF B 1 BRIGHT Offset(4,4) A_Light2();
       M4CG A 1 Offset(2,2) {

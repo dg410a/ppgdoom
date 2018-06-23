@@ -36,7 +36,11 @@ Class PPGSuperpower1 : CustomInventory
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBreath");
 		Stop;
 	PPGIceBreath:
-		TNT1 A 0 A_SpawnItem("PPGIceBreath");
+		TNT1 A 0 A_JumpIfInventory("IceBreath",1,3);
+		TNT1 A 0 A_Print("You have learned Ice Breath!");
+		TNT1 A 0 A_GiveInventory("IceBreath");
+		TNT1 A 0 A_GiveInventory("HaveSP2");
+		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
 		Goto End;
 	End:
 		TNT1 A 0 A_KillMaster;
@@ -66,7 +70,11 @@ Class PPGSuperpower2 : CustomInventory
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBeam");
 		Stop;
 	PPGIceBeam:
-		TNT1 A 0 A_SpawnItem("PPGIceBeam");
+		TNT1 A 0 A_JumpIfInventory("IceBeam",1,3);
+		TNT1 A 0 A_Print("You have learned Ice Beam!");
+		TNT1 A 0 A_GiveInventory("IceBeam");
+		TNT1 A 0 A_GiveInventory("HaveSP3");
+		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
 		Goto End;
 	End:
 		TNT1 A 0 A_KillMaster;
@@ -95,7 +103,13 @@ Class PPGSuperpower3 : CustomInventory
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGFireBreath");
 	PPGFireBreath:
-		TNT1 A 0 A_SpawnItem("PPGFireBreath");
+		TNT1 A 0 A_JumpIfInventory("FireBreath",1,3);
+		TNT1 A 0 A_Print("You have learned Fire Breath!");
+		TNT1 A 0 A_GiveInventory("FireBreath");
+		TNT1 A 0 A_GiveInventory("HaveSP4");
+		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
+		Goto End;
+	End:
 		TNT1 A 0 A_KillMaster;
 		Stop;
 	PickupFail:
@@ -122,7 +136,13 @@ Class PPGSuperpower4 : CustomInventory
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGIceBomb");
 	PPGIceBomb:
-		TNT1 A 0 A_SpawnItem("PPGIceBomb");
+		TNT1 A 0 A_JumpIfInventory("IceBomb",1,3);
+		TNT1 A 0 A_Print("You have learned Ice Bomb!");
+		TNT1 A 0 A_GiveInventory("IceBomb");
+		TNT1 A 0 A_GiveInventory("HaveSP5");
+		TNT1 A 0 A_GiveInventory("PPGEnergy",30);
+		Goto End;
+	End:
 		TNT1 A 0 A_KillMaster;
 		Stop;
 	PickupFail:
@@ -149,7 +169,13 @@ Class PPGSuperpower5 : CustomInventory replaces PlasmaRifle
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGLightningBolt");
 	PPGLightningBolt:
-		TNT1 A 0 A_SpawnItem("PPGLightningBolt");
+		TNT1 A 0 A_JumpIfInventory("LBolt",1,3);
+		TNT1 A 0 A_Print("You have learned Lightning Bolt!");
+		TNT1 A 0 A_GiveInventory("LBolt");
+		TNT1 A 0 A_GiveInventory("HaveSP6");
+		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
+		Goto End;
+	End:
 		TNT1 A 0 A_KillMaster;
 		Stop;
 	PickupFail:
@@ -177,177 +203,13 @@ Class PPGSuperpower6 : CustomInventory replaces BFG9000
 	PickupTrue:
 		TNT1 A 0 A_JumpIf(CallACS("PlayerClassChecker") == 0,"PPGBFR");
 	PPGBFR:
-		TNT1 A 0 A_SpawnItem("PPGBFR");
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-// Blossom's Superpowers
-
-Class PPGIceBreath : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned Ice Breath!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("IceBreath",1,2);
-		TNT1 A 0 A_GiveInventory("IceBreath");
-		TNT1 A 0 A_GiveInventory("HaveSP2");
-		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-Class PPGIceBeam : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned Ice Beam!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("IceBeam",1,2);
-		TNT1 A 0 A_GiveInventory("IceBeam");
-		TNT1 A 0 A_GiveInventory("HaveSP3");
-		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-Class PPGFireBreath : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned Fire Breath!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("FireBreath",1,2);
-		TNT1 A 0 A_GiveInventory("FireBreath");
-		TNT1 A 0 A_GiveInventory("HaveSP4");
-		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-Class PPGIceBomb : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned Ice Bomb!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("IceBomb",1,2);
-		TNT1 A 0 A_GiveInventory("IceBomb");
-		TNT1 A 0 A_GiveInventory("HaveSP5");
-		TNT1 A 0 A_GiveInventory("PPGEnergy",30);
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-Class PPGLightningBolt : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned Lightning Bolt!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("LBolt",1,2);
-		TNT1 A 0 A_GiveInventory("LBolt");
-		TNT1 A 0 A_GiveInventory("HaveSP6");
-		TNT1 A 0 A_GiveInventory("PPGEnergy",30);
-		TNT1 A 0 A_KillMaster;
-		Stop;
-	PickupFail:
-		TNT1 A 0;
-		fail;
-	}
-}
-
-Class PPGBFR : CustomInventory
-{
-	Default {
-		Inventory.PickupMessage "You have learned the Bio Force Rosa! OH YES!";
-		Inventory.PickupSound "weapon/pickup";
-		+FLOATBOB
-		RenderStyle "Add";
-	}
-	States
-	{
-	Spawn:
-		SPWR F -1;
-		Stop;
-	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGEnergy",600,"PickupFail");
-	PickupTrue:
-		TNT1 A 0 A_JumpIfInventory("BFR",1,2);
+		TNT1 A 0 A_JumpIfInventory("BFR",1,3);
+		TNT1 A 0 A_Print("You have learned the Bio Force Rosa! OH YES!");
 		TNT1 A 0 A_GiveInventory("BFR");
 		TNT1 A 0 A_GiveInventory("HaveSP7");
 		TNT1 A 0 A_GiveInventory("PPGEnergy",40);
+		Goto End;
+	End:
 		TNT1 A 0 A_KillMaster;
 		Stop;
 	PickupFail:
@@ -425,7 +287,7 @@ Class IceBombMissile : Actor
 		+ICEDAMAGE
 		DamageType "Ice";
 		Scale 1.5;
-		SeeSound "icebomb/fire";
+		SeeSound "weapons/rocklf";
 		DeathSound "weapons/rocklx";
 	}
 	States
@@ -693,6 +555,13 @@ Class PPGEnergy : Ammo replaces Cell
    Spawn:
       PPGE A -1;
       Loop;
+	}
+}
+
+Class PPGEnergyDrop : PPGEnergy
+{
+	Default {
+		Inventory.PickupMessage "Picked up an energy orb.";
 	}
 }
 

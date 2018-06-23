@@ -5,6 +5,7 @@ Class AA12Pickup : CustomInventory {
 	Default {
 		Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!";
 		Inventory.PickupSound "misc/w_pkup";
+		Scale .375;
 	}
 	States
 	{
@@ -28,6 +29,7 @@ Class AA12Drop : CustomInventory {
 	Default {
 		Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!";
 		Inventory.PickupSound "misc/w_pkup";
+		Scale .375;
 	}
 	States
 	{
@@ -74,7 +76,7 @@ Class AA12 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(AA12F,"Null");
 			A_Overlay(AA12N,"Null");
-			A_PlaySound("weapon/holstera");
+			A_PlaySound("weapon/holstera",CHAN_AUTO);
 		}
 	Lower:
 		TNT1 A 0 { 
@@ -92,7 +94,7 @@ Class AA12 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(AA12N,"AA12Ready");
 			A_OverlayFlags(AA12N,PPGWeapMove,true);
-			A_PlaySound("weapon/raisea");
+			A_PlaySound("weapon/raisea",CHAN_AUTO);
 			A_PlaySound("aa12/bolt",CHAN_AUTO);
 		}
 	Raise:
@@ -196,7 +198,7 @@ Class AA12 : PPGWeapon
     	AAEF A 0 BRIGHT {
 			A_GiveInventory("WeaponInUse",1);
 			A_FireBullets(1,1,-1,32,"AA12Puff",1,1920);
-			A_PlayWeaponSound("aa12/fire");
+			A_PlaySound("aa12/fire",CHAN_WEAPON);
 		}
 		AAEF A 1 Offset(3,2) BRIGHT;
     	AAEF B 1 Offset(6,4) BRIGHT;

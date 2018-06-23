@@ -46,7 +46,7 @@ Class PPGShotgunSpawner : CustomInventory replaces Shotgun
 		Goto GunModeOff;
 	GunModeOn:
 		TNT1 A 0 A_SpawnItemEx("PPGShotgunPickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
-		TNT1 A 0 A_Jump(255,"Superpower","End");
+		TNT1 A 0 A_Jump(255,"Superpower"); //,"End");
 	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower1",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 		Goto End;
@@ -77,7 +77,7 @@ Class PPGSuperShotgunSpawner : CustomInventory replaces SuperShotgun
 		Goto GunModeOff;
 	GunModeOn:
 		TNT1 A 0 A_SpawnItemEx("PPGShotgunPickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
-		TNT1 A 0 A_Jump(255,"Superpower","End");
+		TNT1 A 0 A_Jump(255,"Superpower"); //,"End");
 	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower2",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 		Goto End;
@@ -108,7 +108,7 @@ Class PPGChaingunSpawner : CustomInventory replaces Chaingun
 		Goto GunModeOff;
 	GunModeOn:
 		TNT1 A 0 A_SpawnItemEx("M4A1Pickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
-		TNT1 A 0 A_Jump(255,"Superpower","End");
+		TNT1 A 0 A_Jump(255,"Superpower"); //,"End");
 	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower3",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 		Goto End;
@@ -139,7 +139,7 @@ Class PPGRocketLauncherSpawner : CustomInventory replaces RocketLauncher
 		Goto GunModeOff;
 	GunModeOn:
 		TNT1 A 0 A_SpawnItemEx("AA12Pickup",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
-		TNT1 A 0 A_Jump(255,"Superpower","End");
+		TNT1 A 0 A_Jump(255,"Superpower"); //,"End");
 	Superpower:
 		TNT1 A 0 A_SpawnItemEx("PPGSuperpower4",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 		Goto End;
@@ -352,11 +352,11 @@ Class PPGClipBox : PPGClip {
 Class PPGShell : Ammo { 
 	Default {
 		//$Category ammunition
-		Inventory.PickupMessage "Picked up a 12 gauge shotgun shell.";
-		Inventory.MaxAmount 50;
-		Inventory.Amount	1;
-		Ammo.BackpackAmount 1;
-		Ammo.BackpackMaxAmount 50;
+		Inventory.PickupMessage "Picked up two 12 gauge shotgun shells.";
+		Inventory.MaxAmount 48;
+		Inventory.Amount	2;
+		Ammo.BackpackAmount 2;
+		Ammo.BackpackMaxAmount 48;
 	}
 	States
 	{

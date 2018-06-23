@@ -16,3 +16,5 @@ There are some extra options with regards to this mod if you look under "PPG Opt
 - Superpowers: There are buttons for toggling superpowers and using them. They are as follows:
   - Next and previous superpowers (X and Z by default respectively)
   - Use superpower (Right Mouse Button by Default)
+  - Use Quick Kick (Q by Default)
+

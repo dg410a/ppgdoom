@@ -70,7 +70,7 @@ Class Glock18 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(GlockF,"Null");
 			A_Overlay(GlockN,"Null");
-			A_PlaySound("pistol/holster");
+			A_PlaySound("pistol/holster",CHAN_AUTO);
 		}
 	Lower:
 		TNT1 A 0 { 
@@ -88,7 +88,7 @@ Class Glock18 : PPGWeapon
 		TNT1 A 0 {
 			A_Overlay(GlockN,"GlockReady");
 			A_OverlayFlags(GlockN,PPGWeapMove,true);
-			A_PlaySound("pistol/raise");
+			A_PlaySound("pistol/raise",CHAN_AUTO);
 		}
 		TNT1 A 0 A_PlaySound("glock/boltb",CHAN_AUTO);
 	Raise:
@@ -200,7 +200,7 @@ Class Glock18 : PPGWeapon
     	GLKG B 1 Offset(3,3) { //Offset(3,35) BRIGHT {
 			A_GiveInventory("WeaponInUse",1);
 			A_FireBullets(2,2,-1,5,"BulletPuff",1,1280);
-			A_PlayWeaponSound("glock/fire");
+			A_PlaySound("glock/fire",CHAN_WEAPON);
 		}
     	GLKG B 1 Offset(6,6); //Offset(6,38) BRIGHT;
 		GLKG B 1 Offset(9,9); //Offset(9,41);

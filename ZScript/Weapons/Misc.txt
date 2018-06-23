@@ -193,6 +193,7 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_PlaySound("icebomb/fire",5)
 	  TNT1 A 0 A_TakeInventory("PPGEnergy",20);
 	  TNT1 A 0 A_AlertMonsters;
+	  TNT1 A 0 A_PlaySound("icebreath/fire",5);
 	  TNT1 A 12 A_FireCustomMissile("IceBombMissile",0,0,0);
 	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
 	  Stop;
@@ -358,7 +359,7 @@ Class PPGWeapon : Weapon
 	  Goto Ready;
    QuickKick:
 	  KICK C 1 Offset(-12,30) {
-			A_PlaySound("fists/swing");
+			A_PlaySound("fists/swing",6);
 			A_GiveInventory("QuickKickInUse",1);
 		}
 	  KICK C 1 Offset(-9,15);
