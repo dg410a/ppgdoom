@@ -1,17 +1,32 @@
 #library "ppg"
 #include "zcommon.acs"
 
+/*script "Debug" ENTER
+{
+	Print(d:GetPlayerInput(-1, INPUT_BUTTONS));
+	delay(1)
+}*/
+
 script "GunModeChecker" (void)
 {
 	SetResultValue(GetCVar("user_gunmode"));
 	terminate;
 }
 
-script "User1Refire" ENTER
+script "PPGRefire" ENTER
 {
 	int buttonsa;
 	while(1) {
 		buttonsa = GetPlayerInput(-1, INPUT_BUTTONS); //For User1Refire
+		if(buttonsa & BT_ATTACK) {
+			GiveInventory("AttackRefire",9999);
+			delay(1);
+		}
+		else {
+			TakeInventory("AttackRefire",9999);
+			delay(1);
+		}
+
 		if(buttonsa & BT_USER1) {
 			GiveInventory("User1Refire",9999);
 			delay(1);
@@ -20,16 +35,38 @@ script "User1Refire" ENTER
 			TakeInventory("User1Refire",9999);
 			delay(1);
 		}
+		
+		if(buttonsa & BT_USER2) {
+			GiveInventory("User2Refire",9999);
+			delay(1);
+		}
+		else {
+			TakeInventory("User2Refire",9999);
+			delay(1);
+		}
 	}
 }
 
-script "User1Rampage" ENTER
+script "PPGRampage" ENTER
 {
 	int buttonsb;
 	int time = 0;
 	while(1) {
 		buttonsb = GetPlayerInput(-1, INPUT_BUTTONS); //For User1Refire
 		if(buttonsb & BT_USER1) {
+			if(time >= 70) {
+				SetMugShotState("Rampage");
+				delay(1);
+			}
+			time++;
+			delay(1);
+		}
+		else {
+			time = 0;
+			delay(1);
+		}
+		
+		if(buttonsb & BT_USER2) {
 			if(time >= 70) {
 				SetMugShotState("Rampage");
 				delay(1);

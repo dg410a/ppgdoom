@@ -1,26 +1,89 @@
 
+Class QuickKickInUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
+Class FistsInUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
 Class GunModeInit : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
+Class AttackRefire : Inventory
 { Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
 
 Class User1Refire : Inventory
 { Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
 
+Class User2Refire : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
+Class WeaponInUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
 Class PPGWeapon : Weapon
 {
+	const PPGWeapBob = PSPF_ADDBOB;
+	const PPGWeapMove = PSPF_ADDWEAPON;
+	enum PPGWeaponLayers {
+		// Weapon Layers
+		GlockN = 2,
+		GlockF = 3,
+		ShotgunN,
+		ShotgunF,
+		M4A1N,
+		M4A1F,
+		AA12N,
+		AA12F,
+		QKick,
+		FistsL,
+		FistsR,
+		FistsPLA,
+		FistsPRA,
+		FistsPLB,
+		FistsPRB,
+		
+		// Superpower Layers
+		SPower,
+		SPower1,
+		SPower2,
+		SPower3,
+		SPower4,
+		SPower5,
+		SPower6,
+		SPower7,
+	}
 	Default {
 		Weapon.BobStyle "InverseSmooth";
 		Weapon.BobSpeed 2.5;
 	}
    States
    {
+   Null:
+	  TNT1 A 1;
+	  Stop;
    Select:
    Deselect:
    Ready:
-	  "####" "#" 1 A_WeaponReady(WRF_ALLOWUSER1);
+	  "####" "#" 1 A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);
 	  Loop;
    Fire:
       // Superpowers
    User1:
+	  "####" "#" 1 {
+			A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+			A_Overlay(SPower,"Superpowers");
+			
+			if(CheckInventory("User2Refire",1)) {
+				if(!A_JumpIfInventory("QuickKickInUse",1,"Null")
+				&& !A_JumpIfInventory("FistsInUse",1,"Null")
+				&& !A_JumpIfInventory("SP7InUse",1,"Null")) {
+					A_Overlay(QKick,"QuickKick");
+					A_OverlayFlags(QKick,PPGWeapBob,false);
+				}
+			}
+		}
+	  Goto Ready;
+   Superpowers:
 	  "####" "#" 0 A_JumpIfInventory("SP2Selected",1,"SP2");
       "####" "#" 0 A_JumpIfInventory("SP3Selected",1,"SP3");
 	  "####" "#" 0 A_JumpIfInventory("SP4Selected",1,"SP4");
@@ -31,11 +94,11 @@ Class PPGWeapon : Weapon
 // Laser Eyes
    SP1:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",1,"FireLasers");
-	  Goto Ready;
+	  Stop;
    FireLasers:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GunFlash("LaserEyes");
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_Overlay(SPower1,"LaserEyes");
+	  Stop;
    LaserEyes:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_SetBlend("75 00 00",.8,5);
@@ -56,11 +119,11 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP2A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireIceBreath");
-	  Goto Ready;
+	  Stop;
    FireIceBreath:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GunFlash("IceBreath");
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_Overlay(SPower2,"IceBreath");
+	  Stop;
    IceBreath:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_PlaySound("icebreath/fire",5);
@@ -77,11 +140,11 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP3A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",10,"FireIceBeam");
-	  Goto Ready;
+	  Stop;
    FireIceBeam:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GunFlash("IceBeam");
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_Overlay(SPower3,"IceBeam");
+	  Stop;
    IceBeam:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_SetBlend("00 00 75",.8,5);
@@ -99,11 +162,11 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP4A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireFireBreath");
-	  Goto Ready;
+	  Stop;
    FireFireBreath:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GunFlash("FireBreath");
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_Overlay(SPower4,"FireBreath");
+	  Stop;
    FireBreath:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_PlaySound("firebreath/fire",5);
@@ -120,11 +183,11 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP5A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",20,"FireIceBomb");
-	  Goto Ready;
+	  Stop;
    FireIceBomb:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GunFlash("IceBomb");
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_Overlay(SPower5,"IceBomb");
+	  Stop;
    IceBomb:
 	  TNT1 A 8 A_GiveInventory("SPInUse",1);
 //	  TNT1 A 0 A_PlaySound("icebomb/fire",5)
@@ -141,65 +204,64 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP6A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",2,"FireLightningBolt");
-	  Goto Ready;
+	  Stop;
    FireLightningBolt:
 //	  TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"LBGunModeOn")
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-   FLBHolster:
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,128);
-   FLBFire:
-	  TNT1 A 0 A_GunFlash("LightningBolt");
-	  TNT1 A 1 Offset(0,128);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(-3,30);
-	  "####" "#" 1 Offset(-6,27);
-	  "####" "#" 1 Offset(-9,24);
-	  "####" "#" 1 Offset(4,29);
-	  "####" "#" 1 Offset(2,31);
-	  "####" "#" 5 Offset(0,32);
-      "####" "#" 1;
-	  "####" "#" 0 A_GiveInventory("SPRefire",1);
-   FLBLoop:
-      "####" "#" 2;
-	  "####" "#" 0 A_JumpIfInventory("SPRefire",1,"FLBLoop");
-   FLBEnd:
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,128) A_TakeInventory("SPInUse",9999);
-   FLBLower:
-	  "####" "#" 1 A_Lower;
-	  "####" "#" 0 A_Lower;
-	  Goto Ready;
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 {
+			A_Overlay(SPower6,"LBRaise");
+			A_OverlayFlags(SPower6,PPGWeapBob,false);
+		}
+	  Stop;
+   LBRaise:
+	  TNT1 A 0 {
+			A_GiveInventory("SPInUse",1);
+			A_GiveInventory("SP6InUse",1);
+		}
+	  FISL A 1 Offset(0,96);
+	  FISL A 1 Offset(0,80);
+	  FISL A 1 Offset(0,64);
+	  FISL A 1 Offset(0,48);
+	  FISL A 1 Offset(0,32);
+	  FISL A 1 Offset(0,16);
+	  "####" "#" 0 A_Overlay(SPower6,"LightningBolt");
+	  Stop;
    LightningBolt:
-	  LGTN A 10;
-	  LGTN B 7;
+	  LGTN A 1 Offset(0,0);
+	  LGTN A 1 Offset(-3,-3);
+	  LGTN A 1 Offset(-6,-6);
+	  LGTN A 1 Offset(-9,-9);
+	  LGTN B 1 Offset(4,3);
+	  LGTN B 1 Offset(2,1);
+	  LGTN B 6 Offset(0,0);
 	  LGTN C 1;
-	  TNT1 A 0 A_GiveInventory("SPInUse",1);
-//	  TNT1 A 0 A_PlaySound("icebomb/fire",5)
 	LBLoop:
 	  TNT1 A 0 A_TakeInventory("PPGEnergy",2);
 	  TNT1 A 0 A_AlertMonsters;
 	  LGTN D 2 A_RailAttack(17,-5,0,"none","66 ff ff",RGF_SILENT|RGF_NOPIERCING,0,"none",0,0,0,0,0.0,0.0,"none",0);
+	  TNT1 A 0 A_JumpIfNoAmmo(1);
+	  Goto LBCheck;
+	  TNT1 A 0 A_JumpIfInventory("WeaponInUse",1,1);
+	  Goto LBEnd;
+	LBCheck:
 	  TNT1 A 0 A_JumpIfInventory("PPGEnergy",2,"LBRefire");
 	  Goto LBEnd;
 	LBRefire:
 	  TNT1 A 0 A_JumpIfInventory("User1Refire",1,"LBLoop");
 	LBEnd:
-	  "####" "#" 0 A_TakeInventory("SPRefire",9999);
-	  LGTN A 6;
+	  "####" "#" 0 A_Overlay(SPower6,"LBLower");
+	  Stop;
+	LBLower:
+	  FISL A 1 Offset(0,16);
+	  FISL A 1 Offset(0,32);
+	  FISL A 1 Offset(0,48);
+	  FISL A 1 Offset(0,64);
+	  FISL A 1 Offset(0,80);
+	  FISL A 1 Offset(0,96);
+	  TNT1 A 0 {
+			A_TakeInventory("SPInUse",9999);
+			A_TakeInventory("SP6InUse",9999);
+		}
 	  Stop;
 	  
 //Superpower 7
@@ -208,43 +270,43 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP7A:
+	  "####" "#" 0 A_JumpIfInventory("WeaponInUse",1,"SPEnd");
+	  "####" "#" 0 A_JumpIfInventory("QuickKickInUse",1,"SPEnd");
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",40,"FireBFR");
-	  Goto Ready;
+	  Stop;
    FireBFR:
-	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"Ready");
-	  "####" "#" 0 A_GiveInventory("SPInUse",1);
-//	  TNT1 A 0 A_JumpIf(CallACS("GunModeChecker") == True,"LBGunModeOn")
+	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"FBHolster");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
+	  Stop;
    FBHolster:
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,128);
-   FBFire:
-	  TNT1 A 0 A_GunFlash("BFR");
-	  TNT1 A 1 Offset(0,128);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 0 {
+			A_GiveInventory("SPInUse",1);
+			A_GiveInventory("SP7InUse",1);
+		}
+	  "####" "#" 1 Offset(0,16);
 	  "####" "#" 1 Offset(0,32);
-      "####" "#" 41;
 	  "####" "#" 1 Offset(0,48);
 	  "####" "#" 1 Offset(0,64);
 	  "####" "#" 1 Offset(0,80);
 	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,128) A_TakeInventory("SPInUse",9999);
-   FBLower:
-	  "####" "#" 1 A_Lower;
-	  "####" "#" 0 A_Lower;
-	  Goto Ready;
-   BFR:
-	  TNT1 A 0 A_AlertMonsters;
-	  FISG A 7;
+	  "####" "#" 0 A_Overlay(SPower7,"BFRRaise");
+	  Stop;
+   BFRRaise:
+	  FISG A 1 Offset(0,96);
+	  FISG A 1 Offset(0,80);
+	  FISG A 1 Offset(0,64);
+	  FISG A 1 Offset(0,48);
+	  FISG A 1 Offset(0,32);
+	  FISG A 1 Offset(0,16);
+	  FISG A 1;
+	  "####" "#" 0 A_Overlay(SPower7,"BFR");
+	  Stop;
+	BFR:
 	  BFRG ABCDE 1;
+	  TNT1 A 0 A_AlertMonsters;
 	  TNT1 A 0 A_PlaySound("bfr/fire");
 	  BFRG FF 1 A_SpawnItem("BFRBallChargeA1",6,0,0);
 	  BFRG FF 1 A_SpawnItem("BFRBallChargeA2",6,0,0);
@@ -259,16 +321,97 @@ Class PPGWeapon : Weapon
 	  TNT1 A 0 A_TakeInventory("PPGEnergy",40);
 	  BFRG I 12 A_FireCustomMissile("BFRBall",0,0,0);
 	  BFRG JKLM 1;
-	  FISG A 7;
+	  FISG A 1;
+	  "####" "#" 0 A_Overlay(SPower7,"BFRLower");
 	  Stop;
-	  
+	BFRLower:
+	  FISG A 1 Offset(0,16);
+	  FISG A 1 Offset(0,32);
+	  FISG A 1 Offset(0,48);
+	  FISG A 1 Offset(0,64);
+	  FISG A 1 Offset(0,80);
+	  FISG A 1 Offset(0,96);
+	  "####" "#" 0 A_Overlay(SPower7,"FBRaise");
+	  Stop;
+   FBRaise:
+	  "####" "#" 1 Offset(0,16);
+	  "####" "#" 1 Offset(0,32);
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 0; //A_Overlay(SPower7,"Ready");
+	  Stop;
+	SPEnd:
+		TNT1 A 1;
+		Stop;
+   User2:
+	  "####" "#" 1 {
+			A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+			if(!A_JumpIfInventory("QuickKickInUse",1,"Null")
+			&& !A_JumpIfInventory("SP7InUse",1,"Null")
+			&& !A_JumpIfInventory("FistsInUse",1,"Null")) {
+				A_Overlay(QKick,"QuickKick");
+				A_OverlayFlags(QKick,PPGWeapBob,false);
+			}
+		}
+	  Goto Ready;
+   QuickKick:
+	  KICK C 1 Offset(-12,30) {
+			A_PlaySound("fists/swing");
+			A_GiveInventory("QuickKickInUse",1);
+		}
+	  KICK C 1 Offset(-9,15);
+	  KICK D 6 Offset(-6,0) A_CustomPunch(8,1,0,"FistPuff");
+	  KICK C 1 Offset(-9,15);
+	  KICK C 1 Offset(-12,30);
+	  TNT1 A 4;
+	  TNT1 A 0 A_TakeInventory("QuickKickInUse",9999);
+	  Stop;
    }
+}
+
+Class FistPuff : Actor
+{
+	Default {
+		+NOBLOCKMAP
+		+NOGRAVITY
+		+PUFFONACTORS
+		DamageType "Melee";
+		activesound "";
+		attacksound "fists/wall";
+		seesound "fists/punch2";
+	}
+  states
+  {
+  Spawn:
+    TNT1 A 0;
+	TNT1 A 1;
+	stop;
+  Crash:
+  	TNT1 A 0;
+	TNT1 A 1;
+  	stop;
+  Melee:
+  	TNT1 A 0;
+	TNT1 A 1;
+	stop;
+  }
 }
 
 Class SPRefire : Inventory
 { Default { +INVENTORY.UNDROPPABLE } }
 
 Class SPInUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP6InUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SP7InUse : Inventory
+{ Default { +INVENTORY.UNDROPPABLE } }
+
+Class SPInState : Inventory
 { Default { +INVENTORY.UNDROPPABLE } }
 
 Class HaveSP1 : Inventory

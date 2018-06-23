@@ -61,7 +61,7 @@ Class PPGShotgun : PPGWeapon
 		+NOEXTREMEDEATH
 //		+NOAUTOFIRE
 		Weapon.SelectionOrder 1300;
-		AttackSound "shotgun/fire";
+//		AttackSound "shotgun/fire";
 		Inventory.Icon "shoticon";
 		Inventory.PickupMessage "You got the Winchester 1887 Shotgun!";
 		Obituary "%k gave %o a taste of buckshot.";
@@ -74,79 +74,230 @@ Class PPGShotgun : PPGWeapon
 	Pickup:
 		TNT1 A 0 A_GiveInventory("FPShotgun",1);
 		Stop;
-   Deselect:
-	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
-      FISG A 0 A_PlaySound("weapon/holstera");
-      WSGG A 1 A_Lower;
-	  WSGG A 0 A_Lower;
-      Goto Deselect+2;
-   Select:
-	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
-      TNT1 A 0 A_PlaySound("weapon/raisea");
-      TNT1 A 0 A_PlaySound("shotgun/bolt",CHAN_AUTO);
-	  WSGG A 1 A_Raise;
-      WSGG A 0 A_Raise;
-      Goto Select+3;
+	Deselect:
+		TNT1 A 0 {
+			A_Overlay(ShotgunF,"Null");
+			A_Overlay(ShotgunN,"Null");
+			A_PlaySound("weapon/holstera");
+		}
+	Lower:
+		TNT1 A 0 { 
+			A_TakeInventory("RHSeq",9999);
+			A_TakeInventory("PPGFistsPunchLeft",9999);
+			A_TakeInventory("FistsInUse",9999);
+			A_TakeInventory("WeaponInUse",9999);
+			A_TakeInventory("SPInUse",9999);
+			A_TakeInventory("SP6InUse",9999);
+			A_TakeInventory("SP7InUse",9999);
+		}
+		WSGG A 1 A_Lower(12);
+		Loop;
+	Select:
+		TNT1 A 0 {
+			A_Overlay(ShotgunN,"ShotgunReady");
+			A_OverlayFlags(ShotgunN,PPGWeapMove,true);
+			A_PlaySound("weapon/raisea");
+		}
+		TNT1 A 0 A_PlaySound("shotgun/bolt",CHAN_AUTO);
+	Raise:
+		TNT1 A 0 { 
+			A_TakeInventory("RHSeq",9999);
+			A_TakeInventory("PPGFistsPunchLeft",9999);
+			A_TakeInventory("FistsInUse",9999);
+			A_TakeInventory("WeaponInUse",9999);
+			A_TakeInventory("SPInUse",9999);
+			A_TakeInventory("SP6InUse",9999);
+			A_TakeInventory("SP7InUse",9999);
+		}
+		TNT1 A 1 A_Raise(12);
+		Loop;
     Ready:
-    	WSGG A 1 A_WeaponReady(WRF_ALLOWUSER1);
-    	Loop;
-    Fire:
-//    	ASHF A 0 BRIGHT A_GunFlash("Gunfire")
-    	WSGF A 1 BRIGHT Offset(5,37) A_FireBullets(5.6,3.05,7,5,"BulletPuff",1,1280);
-    	WSGF A 1 BRIGHT Offset(10,42);
-		WSGF B 1 Offset(0,42);
-		WSGF B 1 OffSet(-2,40);
-		WSGF B 1 OffSet(-4,38);
-		WSGF B 1 OffSet(-6,36);
-		WSGF A 1 OffSet(6,26);
-		WSGF A 1 OffSet(4,28);
-		WSGF A 1 OffSet(2,30);
-		WSGF A 4 OffSet(0,32);
-		WSGF A 1 OffSet(1,30);
-		WSGF A 1 OffSet(3,27);
-		WSGF A 1 OffSet(6,23);
-		WSGF B 1 OffSet(-5,39);
-		WSGF B 1 OffSet(-2,35);
-		WSGF B 1 OffSet(0,32) A_PlaySound("shotgun/bolt");
-		WSGF C 1 OffSet(1,31);
-		WSGF D 1 OffSet(2,30);
-		WSGF E 3 OffSet(3,29);
-		WSGF F 1 OffSet(2,30);
-		WSGF F 1 OffSet(1,31);
-		WSGG B 1 OffSet(0,32);
-		WSGG B 1 OffSet(-2,35);
-		WSGG B 1 OffSet(-5,39);
-		WSGG A 1 OffSet(6,23);
-		WSGG A 1 OffSet(3,27);
-		WSGG A 1 OffSet(1,30);
-		WSGG A 1 OffSet(0,32);
-		TNT1 A 0 A_Refire;
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo");
+    	TNT1 A 0 {
+			if(!CheckInventory("WeaponInUse",1)
+				&& !CheckInventory("SP7InUse",1)) {
+				A_Overlay(ShotgunN,"ShotgunReady",true);
+				A_OverlayFlags(ShotgunN,PPGWeapBob,true);
+			}
+		}
+    	Goto ReadyLoop;
+	ReadyLoop:
+    	TNT1 A 1 {
+			if(CheckInventory("WeaponInUse",1) || CheckInventory("SPInUse",1)) {
+					if(CheckInventory("SP7InUse",1)) {
+						A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+					}
+					else if(CheckInventory("SPInUse",1)) {
+						A_WeaponReady(WRF_ALLOWUSER2|WRF_DISABLESWITCH);
+					}
+					else {
+						A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2|WRF_DISABLESWITCH);
+					}
+			}
+			else {
+				A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);	
+			}
+		}
     	Goto Ready;
+	ShotgunDeselect:
+		WSGG A 1 A_Lower(12);
+		wait;
+		TNT1 A 1;
+		stop;
+	ShotgunReady:
+		WSGG A -1;
+		Stop;
+    Fire:
+		TNT1 A 1 { 
+			if(!CheckInventory("WeaponInUse",1)
+				&& !CheckInventory("SP7InUse",1)) {
+					A_Overlay(ShotgunN,"Null");
+					A_Overlay(ShotgunF,"ShotgunFire");
+					A_OverlayFlags(ShotgunF,PPGWeapBob,false);
+			}
+			if(CheckInventory("User1Refire",1)) {
+				A_Overlay(SPower,"Superpowers");
+			}
+			if(CheckInventory("User2Refire",1)) {
+				if(!CheckInventory("QuickKickInUse",1)) {
+					A_Overlay(QKick,"QuickKick");
+				}
+			}
+			// The following statements check if the player runs
+			// out of ammo and jumps into a state to ensure that 
+			// the firing animation finishes before entering back
+			// into the Ready state to commence deselection. This
+			// is for the purpose when the player uses fire and
+			// altfire simultaneously. The first two actions caused 
+			// problems and I only had to settle for the third.
+			
+			/*if(A_JumpIfNoAmmo("Null")) { <-- This crashes the game when
+											   using alt.
+				SetStateLabel("OutofAmmo");
+			}
+			
+			A_JumpIfNoAmmo("OutofAmmo"); <-- Using this in the first frame
+											 will still have the weapon jump 
+											 to the Ready state.
+			*/
+		}
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+											  // running in a separate frame.
+		Goto Ready;
+	OutofAmmo:
+		TNT1 A 1 A_JumpIfNoAmmo(1);
+		Goto Ready;
+		TNT1 A 1 {
+			if(!CheckInventory("WeaponInUse",1)) {
+				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+			}
+			if(!CheckInventory("WeaponInUse",1) 
+				&& !CheckInventory("SPInUse",1) 
+				&& !CheckInventory("QuickKickInUse",1)
+				&& A_JumpIfNoAmmo("Null")) {
+				A_CheckReload();
+			}
+			if(CheckInventory("User1Refire",1)) {
+				A_Overlay(SPower,"Superpowers");
+			}
+		}
+		Loop;
+    ShotgunFire:
+    	WSGF A 1 BRIGHT Offset(5,5) {
+			A_GiveInventory("WeaponInUse",1);
+			A_FireBullets(5.6,3.05,7,5,"BulletPuff",1,1280);
+			A_PlayWeaponSound("shotgun/fire");
+		}
+    	WSGF A 1 BRIGHT Offset(10,10);
+		WSGF B 1 Offset(0,10);
+		WSGF B 1 OffSet(-2,8);
+		WSGF B 1 OffSet(-4,6);
+		WSGF B 1 OffSet(-6,4);
+		WSGF A 1 OffSet(6,-6);
+		WSGF A 1 OffSet(4,-4);
+		WSGF A 1 OffSet(2,-2);
+		WSGF A 1 OffSet(0,0);
+		/*
+		WSGF A 1 OffSet(1,-2);
+		WSGF A 1 OffSet(3,-5);
+		WSGF A 1 OffSet(6,-9);
+		WSGF B 1 OffSet(-5,7);
+		WSGF B 1 OffSet(-2,3);
+		WSGF B 1 OffSet(0,0) A_PlaySound("shotgun/bolt");
+		WSGF C 1 OffSet(1,-1);
+		WSGF D 1 OffSet(2,-2);
+		WSGF E 3 OffSet(3,-3);
+		WSGF F 1 OffSet(2,-2);
+		WSGF F 1 OffSet(1,-1);
+		WSGG B 1 OffSet(0,0);
+		WSGG B 1 OffSet(-2,3);
+		WSGG B 1 OffSet(-5,7);
+		WSGG A 1 OffSet(6,-9);
+		WSGG A 1 OffSet(3,-5);
+		WSGG A 1 OffSet(1,-2);
+		WSGG A 1 OffSet(0,0);
+		*/ //Old Shotgun Frames
+		
+		WSGF A 1 OffSet(-1,2);
+		WSGC A 1 OffSet(-3,5);
+		WSGC A 1 OffSet(-6,9);
+		WSGC A 1 OffSet(0,0);
+		WSGC A 1 OffSet(1,-2);
+		WSGC A 1 OffSet(3,-5);
+		WSGC B 1 OffSet(1,-2) A_PlaySound("shotgun/bolt");
+		WSGC B 1 OffSet(0,0);
+		WSGC CDEFGHIJKL 1;
+		WSGC M 1;
+		WSGC M 1 OffSet(1,-2);
+		WSGC N 1 OffSet(-3,5);
+		WSGC N 1 OffSet(-1,2);
+		WSGC N 1 OffSet(0,0);
+		WSGC N 1 OffSet(1,2);
+		WSGC N 1 OffSet(3,5);
+		WSGG A 1 OffSet(-3,-5);
+		WSGG A 1 OffSet(-1,-2);
+		WSGG A 1 OffSet(0,0);
+		TNT1 A 0 {
+			if(CheckInventory("WeaponInUse",1)) {
+				A_Overlay(ShotgunN,"ShotgunReady");
+				A_OverlayFlags(ShotgunN,PPGWeapBob,true);
+			}
+			A_TakeInventory("WeaponInUse",1);
+		}
+    	Stop; //Goto Ready;
 //      Gunfire:
 //     	TNT1 A 0
 //      	TNT1 A 1 A_Light2
 //     	TNT1 A 1 A_Light1
 //      	TNT1 A 1 A_Light0
 //      	Stop
+   FBHolster:
+	  WSGG A 0 {
+			A_GiveInventory("SPInUse",1);
+			A_GiveInventory("SP7InUse",1);
+			A_Overlay(ShotgunN,"Null");
+		}
+	  "####" "#" 1 Offset(0,16);
+	  "####" "#" 1 Offset(0,32);
+	  "####" "#" 1 Offset(0,48);
+	  "####" "#" 1 Offset(0,64);
+	  "####" "#" 1 Offset(0,80);
+	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 0 A_Overlay(SPower7,"BFRRaise");
+	  Stop;
    FBRaise:
-	  WSGG A 1 Offset(0,128);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,96);
+	  WSGG A 1 Offset(0,96);
 	  "####" "#" 1 Offset(0,80);
 	  "####" "#" 1 Offset(0,64);
 	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,33);
-	  "####" "#" 0 A_TakeInventory("SPInUse",9999);
-	  Goto Ready;
-   FLBRaise:
-	  WSGG A 1 Offset(0,128);
-	  "####" "#" 1 Offset(0,112);
-	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,33);
-	  "####" "#" 0 A_TakeInventory("SPInUse",9999);
-	  Goto Ready;
+	  "####" "#" 1 Offset(0,32);
+	  "####" "#" 1 Offset(0,16);
+	  "####" "#" 0 {
+			A_TakeInventory("SPInUse",9999);
+			A_TakeInventory("SP7InUse",9999);
+			A_Overlay(ShotgunN,"ShotgunReady");
+			A_OverlayFlags(ShotgunN,PPGWeapBob,true);
+	  }
+	  Stop;
     }
 }
