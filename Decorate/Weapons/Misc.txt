@@ -84,9 +84,9 @@ ACTOR PPGWeapon : Weapon
 	  TNT1 A 0 A_GiveInventory("SPInUse",1)
 	  TNT1 A 0 A_SetBlend("00 00 75",.8,5)
 	  TNT1 A 0 A_PlaySound("icebeam/fire",5)
-	  TNT1 A 0 A_TakeInventory("PPGEnergy",10)
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",20)
 	  TNT1 A 0 A_AlertMonsters
-	  TNT1 A 29 A_RailAttack(90,0,0,none,none,RGF_SILENT,0,"IcePuff",0,0,0,0,1.5,0.0,"IceBeamTrail",3)
+	  TNT1 A 57 A_RailAttack(180,0,0,none,none,RGF_SILENT,0,"IcePuff",0,0,0,0,1.5,0.0,"IceBeamTrail",3)
 	  TNT1 A 0 A_TakeInventory("SPInUse",9999)
 	  Stop
 	 

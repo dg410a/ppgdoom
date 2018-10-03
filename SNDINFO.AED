@@ -12,6 +12,7 @@ $playeralias bls female *death blsm/death
 //$playersound blsm female *gibbed	misc/gibbed
 $playeralias bls female *usefail blsm/usefail
 $playeralias bls female *grunt blsm/grunt
+$playeralias bls female *surface blsm/inhale
 
 blsm/jump blsmjump
 blsm/land blsmland
@@ -39,6 +40,11 @@ blsmpnchl2 blsmpnchl2
 $random blsm/punchh { blsmpnchh1 blsmpnchh2 }
 blsmpnchh1 blsmpnchh1
 blsmpnchh2 blsmpnchh2
+
+$random blsm/inhale { blsminh1 blsmpinh2 blsmpinh3 }
+blsminh1 blsminh1
+blsminh2 blsminh2
+blsminh3 blsminh3
 
 // Weapons
 

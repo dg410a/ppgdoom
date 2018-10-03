@@ -87,6 +87,17 @@ statusbar FullScreen, ForceScaled
 	DrawNumber 3, PPGHudFont, White, Ammo1, fillzeros, 1294, 638;
 	DrawImage weaponicon, 1304,635;
 	
+	//Breath Bar
+	InInventory SP2Selected, 1
+	{
+		drawbar "ppgbrth", "ppgbrthe", PPGBreathCapacity, horizontal, 1132, 41;
+	}
+	
+	InInventory SP3Selected, 1
+	{
+		drawbar "ppgbrth", "ppgbrthe", PPGBreathCapacity, horizontal, 1132, 41;
+	}
+	
 	//Superpower Icons
 	DrawSwitchableImage "SP1Selected","null","lsricon",1330,36;
 	

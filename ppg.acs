@@ -13,6 +13,20 @@ script "GunModeChecker" (void)
 	terminate;
 }
 
+script "PPGBreathChecker" ENTER
+{
+	while(1) {
+		if(CheckInventory("PPGBreathCapacity") < 100 
+		&& !CheckInventory("SPInUse")) {
+			GiveInventory("PPGBreathCapacity",3);
+			if(CheckInventory("PPGBreathCapacity") == 100) {
+				TakeInventory("PPGOutOfBreath",1);
+			}
+		}
+		delay(2);
+	}
+}
+
 script "PPGRefire" ENTER
 {
 	int buttonsa;

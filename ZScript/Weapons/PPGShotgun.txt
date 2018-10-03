@@ -38,7 +38,7 @@ Class PPGShotgunDrop : CustomInventory {
 		Goto Pickup+2;
 		TNT1 A 0 A_JumpIfInventory("PPGShell",48,"PFail");
 		TNT1 A 0 A_GiveInventory("PPGShotgun");
-		TNT1 A 0 A_TakeInventory("PPGShell",6);
+		TNT1 A 0 A_TakeInventory("PPGShell",4);
 		TNT1 A 0 A_GiveInventory("FPShotgun",1);
 		Stop;
 	PFail:

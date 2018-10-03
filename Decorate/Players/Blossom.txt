@@ -16,6 +16,7 @@ ACTOR Blossom : PlayerPawn
 	Player.StartItem "PPGFists"
 //	Player.StartItem "GunModeChecker"
 	Player.StartItem "PPGEnergy",50
+	Player.StartItem "PPGBreathCapacity",100
 	Player.StartItem "HaveSP1",1
 	Player.StartItem "SP1Selected",1
 	Player.StartItem "LaserEyes"

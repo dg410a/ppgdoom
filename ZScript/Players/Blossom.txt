@@ -16,6 +16,7 @@ Class Blossom : PlayerPawn
 		Player.SoundClass "BLS";
 		Player.StartItem "PPGFists";
 		Player.StartItem "PPGEnergy",50;
+		Player.StartItem "PPGBreathCapacity",100;
 		Player.StartItem "HaveSP1",1;
 		Player.StartItem "SP1Selected",1;
 		Player.StartItem "LaserEyes";
@@ -33,11 +34,11 @@ Class Blossom : PlayerPawn
 		------------
 		1: Laser Eyes (Standard)
 		2: Ice Breath (Uses 2 energy)
-		3: Fire Breath (Uses 3 energy)
-		4: Ice Bomb (Uses 10 energy)
-		5: Lighting Bolt (Uses 3 energy)
-		6: Bio Force Rosa (Uses 40 energy)
-		7: Triple Lasers (Uses 10 energy)
+		3: Ice Beam (Uses 20 energy)
+		4: Lightning Bolt (Uses 2 energy)
+		5: Ice Bomb (Uses 20 energy)
+		6: Triple Lasers (Uses 3 energy)
+		7: Bio Force Rosa (Uses 40 energy)
 		*/
 	}
 	States

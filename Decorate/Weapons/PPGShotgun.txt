@@ -86,7 +86,7 @@ ACTOR PPGShotgun : PPGWeapon
     	Loop
     Fire:
 //    	ASHF A 0 BRIGHT A_GunFlash("Gunfire")
-    	WSGF A 1 BRIGHT Offset(5,37) A_FireBullets(5.6,3.05,7,5,"ShotgunPuff",1,1280)
+    	WSGF A 1 BRIGHT Offset(5,37) A_FireBullets(5.6,3.05,12,4,"ShotgunPuff",1,1280)
     	WSGF A 1 BRIGHT Offset(10,42)
 		WSGF B 1 Offset(0,42)
 		WSGF B 1 OffSet(-2,40)

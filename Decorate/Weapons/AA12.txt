@@ -4,6 +4,7 @@ ACTOR FPAA12 : Inventory
 ACTOR AA12Pickup : CustomInventory {
 	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
 	Inventory.PickupSound "misc/w_pkup"
+	Scale .375
 	States
 	{
 	Spawn:
@@ -25,6 +26,7 @@ ACTOR AA12Pickup : CustomInventory {
 ACTOR AA12Drop : CustomInventory {
 	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
 	Inventory.PickupSound "misc/w_pkup"
+	Scale .375
 	States
 	{
 	Spawn:
@@ -56,6 +58,7 @@ ACTOR AA12 : PPGWeapon
 	Inventory.Icon "aa12icon"
 	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
 	Obituary "%o was pwned by %k's AA-12."
+	Scale .375
 	States
 	{
 	Spawn:

@@ -20,6 +20,12 @@ Class User2Refire : Inventory
 Class WeaponInUse : Inventory
 { Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
 
+Class PPGBreathCapacity : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 100; } }
+
+Class PPGOutOfBreath : Inventory
+{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+
 Class PPGWeapon : Weapon
 {
 	const PPGWeapBob = PSPF_ADDBOB;
@@ -122,15 +128,23 @@ Class PPGWeapon : Weapon
 	  Stop;
    FireIceBreath:
 	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_JumpIfInventory("PPGOutOfBreath",1,"SPEnd");
 	  "####" "#" 0 A_Overlay(SPower2,"IceBreath");
 	  Stop;
    IceBreath:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_PlaySound("icebreath/fire",5);
 	  TNT1 A 0 A_TakeInventory("PPGEnergy",2);
+	  TNT1 A 0 A_TakeInventory("PPGBreathCapacity",5);
 	  TNT1 A 0 A_AlertMonsters;
 	  TNT1 A 3 A_FireCustomMissile("IceSpread",0,0,0);
-	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  TNT1 A 0 {
+			if(!A_JumpIfInventory("PPGBreathCapacity",1,"Null")) {
+				A_GiveInventory("PPGOutOfBreath",1);
+				A_PlaySound("blsm/inhale",CHAN_VOICE);
+			}
+			A_TakeInventory("SPInUse",9999);
+	  }
 	  Stop;
 	 
 //Superpower 3
@@ -139,20 +153,27 @@ Class PPGWeapon : Weapon
 //	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
 //	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
    SP3A:
-	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",10,"FireIceBeam");
+	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",20,"FireIceBeam");
 	  Stop;
    FireIceBeam:
 	  "####" "#" 0 A_JumpIfInventory("SPInUse",1,"SPEnd");
+	  "####" "#" 0 A_JumpIfInventory("PPGOutOfBreath",1,"SPEnd");
+	  "####" "#" 0 A_JumpIfInventory("PPGBreathCapacity",100,1);
+	  Goto SPEnd;
 	  "####" "#" 0 A_Overlay(SPower3,"IceBeam");
 	  Stop;
    IceBeam:
 	  TNT1 A 0 A_GiveInventory("SPInUse",1);
 	  TNT1 A 0 A_SetBlend("00 00 75",.8,5);
 	  TNT1 A 0 A_PlaySound("icebeam/fire",5);
-	  TNT1 A 0 A_TakeInventory("PPGEnergy",10);
+	  TNT1 A 0 A_TakeInventory("PPGEnergy",20);
+	  TNT1 A 0 A_TakeInventory("PPGBreathCapacity",100);
 	  TNT1 A 0 A_AlertMonsters;
-	  TNT1 A 29 A_RailAttack(90,0,0,"none","none",RGF_SILENT,0,"IcePuff",0,0,0,0,1.5,0.0,"IceBeamTrail",3);
-	  TNT1 A 0 A_TakeInventory("SPInUse",9999);
+	  TNT1 A 3 A_RailAttack(180,0,0,"none","none",RGF_SILENT,0,"IcePuff",0,0,0,0,1.5,0.0,"IceBeamTrail",3);
+	  TNT1 A 0 {
+			A_GiveInventory("PPGOutOfBreath",1);
+			A_TakeInventory("SPInUse",9999);
+	  }
 	  Stop;
 	 
 //Superpower 4
@@ -178,9 +199,9 @@ Class PPGWeapon : Weapon
 	  
 //Superpower 5
    SP5:
-//	  TNT1 A 0 A_JumpIfInventory("IceBreath",1,"SP2A")
+//	  TNT1 A 0 A_JumpIfInventory("IceBomb",1,"SP2A")
 //	  TNT1 A 0 A_JumpIfInventory("SonicScream",1,"SP2B")
-//	  TNT1 A 0 A_JumpIfInventory("Tornado",1,"SP2C")
+//	  TNT1 A 0 A_JumpIfInventory("Fireball",1,"SP2C")
    SP5A:
 	  "####" "#" 1 A_JumpIfInventory("PPGEnergy",20,"FireIceBomb");
 	  Stop;

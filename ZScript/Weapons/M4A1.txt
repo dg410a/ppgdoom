@@ -311,10 +311,10 @@ Class M4A1Ammo : Ammo
 		Inventory.PickupSound "m4a1/clipout";
 		Inventory.PickupMessage "Picked up a 5.56mm Assault Rifle Clip.";
 		Scale 0.75;
-		Inventory.MaxAmount 200;
+		Inventory.MaxAmount 240;
 		Inventory.Amount	30;
 		Ammo.BackpackAmount 15;
-		Ammo.BackpackMaxAmount 200;
+		Ammo.BackpackMaxAmount 240;
 	}
 	States
 	{

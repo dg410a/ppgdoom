@@ -251,12 +251,11 @@ Class AA12Ammo : Ammo
 {
 	Default {
 		Inventory.PickupSound "aa12/clipout";
-		Inventory.PickupMessage "Picked up a Frag-12 Ammo Drum.";
+		Inventory.PickupMessage "Picked up four Frag-12 shells.";
 		Inventory.MaxAmount 100;
-		Ammo.BackpackAmount 10;
+		Ammo.BackpackAmount 4;
 		Ammo.BackpackMaxAmount 100;
-		Inventory.Amount	20;
-		Scale .5;
+		Inventory.Amount	4;
 	}
 	States
 	{
@@ -266,12 +265,12 @@ Class AA12Ammo : Ammo
 	}
 }
 
-Class AA12AmmoPack : AA12Ammo
+Class AA12AmmoDrum : AA12Ammo
 {
 	Default {
 		Inventory.PickupSound "aa12/clipout";
-		Inventory.PickupMessage "Picked up two Frag-12 Ammo Drums.";
-		Inventory.Amount	40;
+		Inventory.PickupMessage "Picked up a Frag-12 Ammo Drum.";
+		Inventory.Amount	20;
 		Scale .375;
 	}
 	States

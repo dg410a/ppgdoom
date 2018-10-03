@@ -31,9 +31,12 @@ Class Bubbles : PlayerPawn
 		Skill Moves:
 		------------
 		1: Laser Eyes (Standard)
-		2: Thunderclap (Uses 3 energy)
-		3: Sonic Scream (Uses 2 energy)
-		4: Hardcore Mode (Uses 100 energy)
+		2: Sonic Scream (Uses 2 energy)
+		3: Thunderclap (Uses 20 energy)
+		4:  (Uses 2 energy)
+		5: Electric Ball (Uses 20 energy)
+		6: Thunderhead (Uses 40 energy)
+		7: Hardcore Mode (Uses 200 energy)
 		*/
 	}
 	States
