@@ -72,6 +72,775 @@ graphic ppgfont9, 17, 15
 	patch ppgfont9, 0,0 {}
 }
 
+graphic STCFN033, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN033, 0,0 {}
+}
+
+graphic STCFN034, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN034, 0,0 {}
+}
+
+graphic STCFN035, 15, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN035, 0,0 {}
+}
+
+graphic STCFN036, 11, 16
+{
+	xscale 2
+	yscale 2
+	patch PPCFN036, 0,0 {}
+}
+
+graphic STCFN037, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN037, 0,0 {}
+}
+
+graphic STCFN039, 4, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN039, 0,0 {}
+}
+
+graphic STCFN040, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN040, 0,0 {}
+}
+
+graphic STCFN041, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN041, 0,0 {}
+}
+
+graphic STCFN042, 4, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN042, 0,0 {}
+}
+
+graphic STCFN043, 9, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN043, 0,0 {}
+}
+
+graphic STCFN044, 5, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN044, 0,0 {}
+}
+
+graphic STCFN045, 6, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN045, 0,0 {}
+}
+
+graphic STCFN046, 4, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN046, 0,0 {}
+}
+
+graphic STCFN047, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN047, 0,0 {}
+}
+
+graphic STCFN048, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN048, 0,0 {}
+}
+
+graphic STCFN049, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN049, 0,0 {}
+}
+
+graphic STCFN050, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN050, 0,0 {}
+}
+
+graphic STCFN051, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN051, 0,0 {}
+}
+
+graphic STCFN052, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN052, 0,0 {}
+}
+
+graphic STCFN053, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN053, 0,0 {}
+}
+
+graphic STCFN054, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN054, 0,0 {}
+}
+
+graphic STCFN055, 10, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN055, 0,0 {}
+}
+
+graphic STCFN056, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN056, 0,0 {}
+}
+
+graphic STCFN057, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN057, 0,0 {}
+}
+
+graphic STCFN058, 5, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN058, 0,0 {}
+}
+
+graphic STCFN059, 7, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN059, 0,0 {}
+}
+
+graphic STCFN060, 10, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN060, 0,0 {}
+}
+
+graphic STCFN061, 9, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN061, 0,0 {}
+}
+
+graphic STCFN062, 10, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN062, 0,0 {}
+}
+
+graphic STCFN063, 13, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN063, 0,0 {}
+}
+
+graphic STCFN064, 16, 15
+{
+	xscale 2
+	yscale 2
+	patch PPCFN064, 0,0 {}
+}
+
+graphic STCFN065, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN065, 0,0 {}
+}
+
+graphic STCFN066, 13, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN066, 0,0 {}
+}
+
+graphic STCFN067, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN067, 0,0 {}
+}
+
+graphic STCFN068, 13, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN068, 0,0 {}
+}
+
+graphic STCFN069, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN069, 0,0 {}
+}
+
+graphic STCFN070, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN070, 0,0 {}
+}
+
+graphic STCFN071, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN071, 0,0 {}
+}
+
+graphic STCFN072, 14, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN072, 0,0 {}
+}
+
+graphic STCFN073, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN073, 0,0 {}
+}
+
+graphic STCFN074, 10, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN074, 0,0 {}
+}
+
+graphic STCFN075, 14, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN075, 0,0 {}
+}
+
+graphic STCFN076, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN076, 0,0 {}
+}
+
+graphic STCFN077, 17, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN077, 0,0 {}
+}
+
+graphic STCFN078, 13, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN078, 0,0 {}
+}
+
+graphic STCFN079, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN079, 0,0 {}
+}
+
+graphic STCFN080, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN080, 0,0 {}
+}
+
+graphic STCFN081, 11, 16
+{
+	xscale 2
+	yscale 2
+	patch PPCFN081, 0,0 {}
+}
+
+graphic STCFN082, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN082, 0,0 {}
+}
+
+graphic STCFN083, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN083, 0,0 {}
+}
+
+graphic STCFN084, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN084, 0,0 {}
+}
+
+graphic STCFN085, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN085, 0,0 {}
+}
+
+graphic STCFN086, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN086, 0,0 {}
+}
+
+graphic STCFN087, 16, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN087, 0,0 {}
+}
+
+graphic STCFN088, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN088, 0,0 {}
+}
+
+graphic STCFN089, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN089, 0,0 {}
+}
+
+graphic STCFN090, 12, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN090, 0,0 {}
+}
+
+graphic STCFN091, 9, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN091, 0,0 {}
+}
+
+graphic STCFN092, 5, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN092, 0,0 {}
+}
+
+graphic STCFN093, 9, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN093, 0,0 {}
+}
+
+graphic STCFN094, 9, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN094, 0,0 {}
+}
+
+graphic STCFN095, 11, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN095, 0,0 {}
+}
+
+graphic STCFN096, 4, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN096, 0,0 {}
+}
+
+graphic STCFN121, 8, 14
+{
+	xscale 2
+	yscale 2
+	patch PPCFN121, 0,0 {}
+}
+
+graphic WICOLON, 24, 32
+{
+	xscale 2.5
+	yscale 2.5
+	patch WICOLON, 0,0 {}
+}
+
+graphic WINUM0, 36, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM0, 0,0 {}
+}
+
+graphic WINUM1, 26, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM1, 0,0 {}
+}
+
+graphic WINUM2, 36, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM2, 0,0 {}
+}
+
+graphic WINUM3, 36, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM3, 0,0 {}
+}
+
+graphic WINUM4, 35, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM4, 0,0 {}
+}
+
+graphic WINUM5, 36, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM5, 0,0 {}
+}
+
+graphic WINUM6, 35, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM6, 0,0 {}
+}
+
+graphic WINUM7, 32, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM7, 0,0 {}
+}
+
+graphic WINUM8, 35, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM8, 0,0 {}
+}
+
+graphic WINUM9, 36, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WINUM9, 0,0 {}
+}
+
+graphic WIPCNT, 38, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIPCNT, 0,0 {}
+}
+// Intermission
+
+graphic WIENTER, 162, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIENTER, 0,0 {}
+}
+
+graphic WIF, 163, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIF, 0,0 {}
+}
+
+graphic WIOSTI, 109, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIOSTI, 0,0 {}
+}
+
+graphic WIOSTK, 145, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIOSTK, 0,0 {}
+}
+
+graphic WIPAR, 73, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIPAR, 0,0 {}
+}
+
+graphic WISCRT2, 145, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WISCRT2, 0,0 {}
+}
+
+graphic WITIME, 88, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch WITIME, 0,0 {}
+}
+
+graphic WIMSTAR, 70, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch WIMSTAR, 0,0 {}
+}
+
+//Menu
+
+graphic M_EPI1, 425, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_EPI1, 0,0 {}
+}
+
+graphic M_EPI2, 358, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_EPI1, 0,0 {}
+}
+
+graphic M_EPI3, 145, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_EPI1, 0,0 {}
+}
+
+graphic M_EPI4, 354, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_EPI1, 0,0 {}
+}
+
+graphic M_EPISOD, 283, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_EPISOD, 0,0 {}
+}
+
+graphic M_HURT, 210, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_HURT, 0,0 {}
+}
+
+graphic M_PAUSE, 99, 29
+{
+	xscale 2
+	yscale 2
+	patch M_PAUSE, 0,0 {}
+}
+
+graphic M_JKILL, 308, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_JKILL, 0,0 {}
+}
+
+graphic M_LGTTL, 217, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_LGTTL, 0,0 {}
+}
+
+graphic M_LOADG, 187, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_LOADG, 0,0 {}
+}
+
+graphic M_NEWG, 195, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_NEWG, 0,0 {}
+}
+
+graphic M_NGAME, 170, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_NGAME, 0,0 {}
+}
+
+graphic M_NMARE, 317, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_NMARE, 0,0 {}
+}
+
+graphic M_OPTION, 144, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_OPTION, 0,0 {}
+}
+
+graphic M_OPTTTL, 174, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_OPTTTL, 0,0 {}
+}
+
+graphic M_QUITG, 187, 38
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_QUITG, 0,0 {}
+}
+
+graphic M_RDTHIS, 200, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_RDTHIS, 0,0 {}
+}
+
+graphic M_ROUGH, 336, 41
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_ROUGH, 0,0 {}
+}
+
+graphic M_SAVEG, 188, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_SAVEG, 0,0 {}
+}
+
+graphic M_SGTTL, 218, 35
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_SGTTL, 0,0 {}
+}
+
+graphic M_SKILL, 384, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_SKILL, 0,0 {}
+}
+
+graphic M_ULTRA, 233, 34
+{
+	xscale 2.5
+	yscale 2.5
+	patch M_ULTRA, 0,0 {}
+}
+
+//PICS
+/*
+graphic TITLEPIC, 1280, 800
+{
+	xscale 4
+	yscale 4
+	patch TITLEPIC, 0,0 {}
+}
+
+graphic INTERPIC, 1280, 800
+{
+	xscale 4
+	yscale 4
+	patch INTERPIC, 0,0 {}
+}
+
+graphic BOSSBACK, 1280, 800
+{
+	xscale 4
+	yscale 4
+	patch BOSSBACK, 0,0 {}
+}
+*/
+
 //HUD
 
 graphic ppghlth, 227, 10

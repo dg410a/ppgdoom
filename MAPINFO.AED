@@ -1,4 +1,22 @@
 GameInfo
 {
+    titlepage = "PPGTITLE"
 	PlayerClasses = "Blossom"
+	CursorPic = "ppgcrsr"
+    titlemusic = "D_PPGTTL"
+    titletime = 13
+	FinaleMusic = "D_PPGFIN"
+	IntermissionMusic = "D_PPGINT"
+}
+
+Intermission Inter_Cast
+{
+	Image
+	{
+		// This is only here to initialize the background and the music
+		Background = "$bgcastcall"
+		Time = -1
+		Music = "D_PPGEND"
+	}
+	Link = Doom2Cast
 }

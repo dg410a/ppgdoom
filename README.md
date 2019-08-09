@@ -4,9 +4,15 @@ This mod features everybody's favorite superhero trio who are the sole heroes fo
 
 This mod requires GZDoom and a copy of either DOOM or DOOM II (recommended). The former you can grab for free on the ZDoom website (https://zdoom.org/downloads) and the latter you can purchase on either Steam or GOG.
 
-This mod is currently in its beta stage.
+This mod is currently in development.
 
 Feel free to report any bugs in the issues tab and leave any suggestions with regards to what features you want in the mod.
+
+# Installation and Launching the Mod
+
+Just click on "Clone or Download" and then "Download ZIP" to download the mod, or you can check the releases tab for official said releases to download. 
+
+Extracting it is NOT necessary. Just run GZDoom with the mod as it is. My recommendation is to use a launcher like ZDE to make things easier.
 
 # How to Play
 

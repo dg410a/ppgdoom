@@ -1,6 +1,0 @@
-enum
-{
-	// Weapon Layers
-	LaserEyes,
-	IceBreath = 2,
-};

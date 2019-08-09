@@ -41,7 +41,7 @@ $random blsm/punchh { blsmpnchh1 blsmpnchh2 }
 blsmpnchh1 blsmpnchh1
 blsmpnchh2 blsmpnchh2
 
-$random blsm/inhale { blsminh1 blsmpinh2 blsmpinh3 }
+$random blsm/inhale { blsminh1 blsminh2 blsminh3 }
 blsminh1 blsminh1
 blsminh2 blsminh2
 blsminh3 blsminh3
@@ -98,3 +98,25 @@ aa12/clipin aa12in
 aa12/clipin1 aa12in1
 aa12/clipin2 aa12in2
 aa12/bolt aa12bt
+
+// Pickups
+
+pickup/superpower SPPKUP
+pickup/health HLTHPKUP
+pickup/energy ENGYPKUP
+pickup/supercharge SPCHPKUP
+pickup/megasphere MEGAPKUP
+pickup/powerup POWPKUP
+pickup/energybig ENGBPKUP
+
+// Menu
+
+menu/activate		MENUACT	// Activate a new menu
+menu/backup			MENUBACK	// Backup to previous menu
+menu/prompt			MENUACT	// Activate a prompt "menu"
+menu/cursor			MENUCRSR		// Move cursor up/down
+menu/change			MENUCHG	// Select new value for option
+menu/invalid			dsoof		// Menu not available
+menu/dismiss			MENUCHG	// Dismiss a prompt message
+menu/choose			MENUSEL	// Choose a menu item
+menu/clear			MENUCLS	// Close top menu

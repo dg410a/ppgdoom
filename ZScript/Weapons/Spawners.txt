@@ -228,7 +228,7 @@ Class PPGShellSpawner : CustomInventory replaces Shell
 		TNT1 A 0 A_SpawnItemEx("PPGShell",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 		Goto End;
 	GunModeOff:
-		TNT1 A 0 A_SpawnItemEx("PPGEnergy",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
+		TNT1 A 0 A_SpawnItemEx("PPGEnergySmall",0,0,0,0,0,0,random(0,359),PFlags,0,tid);
 	End:
 		TNT1 A 1;
 		Stop;
@@ -352,7 +352,7 @@ Class PPGClipBox : PPGClip {
 Class PPGShell : Ammo { 
 	Default {
 		//$Category ammunition
-		Inventory.PickupMessage "Picked up two 12 gauge shotgun shells.";
+		Inventory.PickupMessage "Picked up four 12 gauge shotgun shells.";
 		Inventory.MaxAmount 48;
 		Inventory.Amount	4;
 		Ammo.BackpackAmount 4;

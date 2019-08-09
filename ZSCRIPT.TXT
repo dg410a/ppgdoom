@@ -19,3 +19,6 @@
 #include "ZScript/Weapons/PPGShotgun.txt"
 #include "ZScript/Weapons/M4A1.txt"
 #include "ZScript/Weapons/AA12.txt"
+
+// Items
+#include "ZScript/Items/Health.AED"

@@ -76,7 +76,7 @@ Class PPGWeapon : Weapon
       // Superpowers
    User1:
 	  "####" "#" 1 {
-			A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+//			A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH);
 			A_Overlay(SPower,"Superpowers");
 			
 			if(CheckInventory("User2Refire",1)) {
@@ -314,7 +314,10 @@ Class PPGWeapon : Weapon
 	  "####" "#" 1 Offset(0,64);
 	  "####" "#" 1 Offset(0,80);
 	  "####" "#" 1 Offset(0,96);
-	  "####" "#" 0 A_Overlay(SPower7,"BFRRaise");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"BFRRaise");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
 	  Stop;
    BFRRaise:
 	  FISG A 1 Offset(0,96);
@@ -324,7 +327,10 @@ Class PPGWeapon : Weapon
 	  FISG A 1 Offset(0,32);
 	  FISG A 1 Offset(0,16);
 	  FISG A 1;
-	  "####" "#" 0 A_Overlay(SPower7,"BFR");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"BFR");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
 	  Stop;
 	BFR:
 	  BFRG ABCDE 1;
@@ -344,7 +350,10 @@ Class PPGWeapon : Weapon
 	  BFRG I 12 A_FireCustomMissile("BFRBall",0,0,0);
 	  BFRG JKLM 1;
 	  FISG A 1;
-	  "####" "#" 0 A_Overlay(SPower7,"BFRLower");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"BFRLower");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
 	  Stop;
 	BFRLower:
 	  FISG A 1 Offset(0,16);
@@ -353,7 +362,10 @@ Class PPGWeapon : Weapon
 	  FISG A 1 Offset(0,64);
 	  FISG A 1 Offset(0,80);
 	  FISG A 1 Offset(0,96);
-	  "####" "#" 0 A_Overlay(SPower7,"FBRaise");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"FBRaise");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
 	  Stop;
    FBRaise:
 	  "####" "#" 1 Offset(0,16);
@@ -369,7 +381,7 @@ Class PPGWeapon : Weapon
 		Stop;
    User2:
 	  "####" "#" 1 {
-			A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
+//			A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH);
 			if(!A_JumpIfInventory("QuickKickInUse",1,"Null")
 			&& !A_JumpIfInventory("SP7InUse",1,"Null")
 			&& !A_JumpIfInventory("FistsInUse",1,"Null")) {

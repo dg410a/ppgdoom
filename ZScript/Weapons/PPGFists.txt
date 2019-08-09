@@ -23,6 +23,7 @@ Class PPGFists : PPGWeapon
 	Lower:
 		TNT1 A 0 { 
 			A_TakeInventory("RHSeq",9999);
+	        A_TakeInventory("QuickKickInUse",9999);
 			A_TakeInventory("PPGFistsPunchLeft",9999);
 			A_TakeInventory("FistsInUse",9999);
 			A_TakeInventory("WeaponInUse",9999);
@@ -43,6 +44,7 @@ Class PPGFists : PPGWeapon
 	Raise:
 		TNT1 A 0 {
 			A_GiveInventory("FistsInUse",9999);
+	        A_TakeInventory("QuickKickInUse",9999);
 			A_TakeInventory("RHSeq",9999);
 			A_TakeInventory("PPGFistsPunchLeft",9999);
 			A_TakeInventory("WeaponInUse",9999);
@@ -279,7 +281,10 @@ Class PPGFists : PPGWeapon
 			 A_Overlay(FistsL,"Null");
 			A_Overlay(FistsR,"Null");
 		}
-	  "####" "#" 0 A_Overlay(SPower7,"BFR");
+	  "####" "#" 0 {
+			A_Overlay(SPower7,"BFR");
+			A_OverlayFlags(SPower7,PPGWeapBob,false);
+		}
 	  Stop;
    BFRLower:
 	  "####" "#" 0 {
