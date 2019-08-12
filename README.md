@@ -2,7 +2,9 @@
 
 This mod features everybody's favorite superhero trio who are the sole heroes for protecting the City of Townsville. Now, they have arrived in the world of DOOM and it's time to kick some demonic butt.
 
-This mod requires GZDoom and a copy of either DOOM or DOOM II (recommended). The former you can grab for free on the ZDoom website (https://zdoom.org/downloads) and the latter you can purchase on either Steam or GOG.
+This mod requires GZDoom, which you can grab for free on the ZDoom website (https://zdoom.org/downloads).
+
+And of course, you will also need a legit copy of either DOOM or DOOM II (the latter is recommended), which are available for purchase on either Steam or GOG.com for dirt cheap (or if you're lucky, a physical copy from Amazon, eBay, or in the wild). However, if you have a very strict budget, there is an alternative called FreeDOOM, which you can grab for free from its website (https://freedoom.github.io/download.html). Nevertheless, I still HIGHLY recommend spending the money on the DOOM games, but again, FreeDOOM is a really good option if money doesn't allow the former.
 
 This mod is currently in development.
 
