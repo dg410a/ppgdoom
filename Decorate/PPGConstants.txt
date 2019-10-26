@@ -1,0 +1,37 @@
+enum
+{
+	// Weapon Layers
+	GlockN = 2,
+	GlockF = 3,
+	ShotgunN,
+	ShotgunF,
+	M4A1N,
+	M4A1F,
+	AA12N,
+	AA12F,
+	QKick,
+	FistsL,
+	FistsR,
+	FistsPLA,
+	FistsPRA,
+	FistsPLB,
+	FistsPRB,
+		
+	// Superpower Layers
+	SPower,
+	SPower1,
+	SPower2,
+	SPower3,
+	SPower4,
+	SPower5,
+	SPower6,
+	SPower7,
+};
+
+
+const int MFlags = SXF_SETMASTER|SXF_NOCHECKPOSITION|SXF_TRANSFERAMBUSHFLAG|SXF_CLEARCALLERTID|
+							SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS|
+							SXF_ISTRACER;
+const int PFlags = SXF_NOCHECKPOSITION|SXF_CLEARCALLERTID|SXF_TRANSFERSPECIAL|SXF_CLEARCALLERSPECIAL|SXF_TRANSFERPOINTERS;
+const int PPGWeapBob = PSPF_ADDBOB;
+const int PPGWeapMove = PSPF_ADDWEAPON;

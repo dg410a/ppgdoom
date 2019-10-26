@@ -1,80 +1,74 @@
-Class FPAA12 : Inventory
-{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+ACTOR FPAA12 : Inventory
+{ +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1 }
 
-Class AA12Pickup : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!";
-		Inventory.PickupSound "misc/w_pkup";
-		Scale .375;
-	}
+ACTOR AA12Pickup : CustomInventory {
+	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
+	Inventory.PickupSound "misc/w_pkup"
+	Scale .375
 	States
 	{
 	Spawn:
-		AAEP A -1;
-		Stop;
+		AAEP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("AA12",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("AA12");
-		TNT1 A 0 A_GiveInventory("FPAA12",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("AA12",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("AA12")
+		TNT1 A 0 A_GiveInventory("FPAA12",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("AA12Ammo",100,"PFail");
-		TNT1 A 0 A_GiveInventory("AA12Ammo",20);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("AA12Ammo",100,"PFail")
+		TNT1 A 0 A_GiveInventory("AA12Ammo",20)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	}
 }
 
-Class AA12Drop : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!";
-		Inventory.PickupSound "misc/w_pkup";
-		Scale .375;
-	}
+ACTOR AA12Drop : CustomInventory {
+	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
+	Inventory.PickupSound "misc/w_pkup"
+	Scale .375
 	States
 	{
 	Spawn:
-		AAEP A -1;
-		Stop;
+		AAEP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("AA12",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("AA12");
-		TNT1 A 0 A_GiveInventory("FPAA12",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("AA12",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("AA12")
+		TNT1 A 0 A_GiveInventory("FPAA12",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("AA12Ammo",100,"PFail");
-		TNT1 A 0 A_GiveInventory("AA12Ammo",10);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("AA12Ammo",100,"PFail")
+		TNT1 A 0 A_GiveInventory("AA12Ammo",10)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	}
 }
 
-Class AA12 : PPGWeapon
+ACTOR AA12 : PPGWeapon
 {
-	Default {
-		Weapon.SelectionOrder 100;
-		Weapon.AmmoType		"AA12Ammo";
-		Weapon.AmmoUse		1;
-		Weapon.AmmoGive1 20;
-		Weapon.SlotNumber 5;
-		DONTHURTSHOOTER;
-//		AttackSound "aa12/fire";
-		Inventory.Icon "aa12icon";
-		Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!";
-		Obituary "%o was pwned by %k's AA-12.";
-	}
+	Weapon.SelectionOrder 100
+	Weapon.AmmoType		"AA12Ammo"
+	Weapon.AmmoUse		1
+	Weapon.AmmoGive1 20
+	Weapon.SlotNumber 5
+	DONTHURTSHOOTER
+//	AttackSound "aa12/fire"
+	Inventory.Icon "aa12icon"
+	Inventory.PickupMessage "You got the AA-12 Explosive Shotgun!"
+	Obituary "%o was pwned by %k's AA-12."
 	States
 	{
 	Spawn:
-		AAEP A -1;
-		Stop;
+		AAEP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_GiveInventory("FPAA12",1);
-		Stop;
+		TNT1 A 0 A_GiveInventory("FPAA12",1)
+		Stop
 	Deselect:
 		TNT1 A 0 {
 			A_Overlay(AA12F,"Null");
@@ -92,8 +86,8 @@ Class AA12 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		AAEG A 1 A_Lower(12);
-		Loop;
+		AAEG A 1 A_Lower(12)
+		Loop
 	Select:
 		TNT1 A 0 {
 			A_Overlay(AA12N,"AA12Ready");
@@ -112,10 +106,10 @@ Class AA12 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		TNT1 A 1 A_Raise(12);
-		Loop;
+		TNT1 A 1 A_Raise(12)
+		Loop
     Ready:
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo");
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo")
     	TNT1 A 0 {
 			if(!CheckInventory("WeaponInUse",1)
 				&& !CheckInventory("SP7InUse",1)) {
@@ -123,7 +117,7 @@ Class AA12 : PPGWeapon
 				A_OverlayFlags(AA12N,PPGWeapBob,true);
 			}
 		}
-    	Goto ReadyLoop;
+    	Goto ReadyLoop
 	ReadyLoop:
     	TNT1 A 1 {
 			if(CheckInventory("WeaponInUse",1) || CheckInventory("SPInUse",1)) {
@@ -141,7 +135,7 @@ Class AA12 : PPGWeapon
 				A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);
 			}
 		}
-    	Goto Ready;
+    	Goto Ready
     Fire:
 		TNT1 A 1 { 
 			if(!CheckInventory("WeaponInUse",1)
@@ -175,12 +169,12 @@ Class AA12 : PPGWeapon
 											 to the Ready state.
 			*/
 		}
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo") // This is the working result,
 											  // running in a separate frame.
-		Goto Ready;
+		Goto Ready
 	OutofAmmo:
-		TNT1 A 1 A_JumpIfNoAmmo(1);
-		Goto Ready;
+		TNT1 A 1 A_JumpIfNoAmmo(1)
+		Goto Ready
 		TNT1 A 1 {
 			if(!CheckInventory("WeaponInUse",1)) {
 				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
@@ -195,24 +189,24 @@ Class AA12 : PPGWeapon
 				A_Overlay(SPower,"Superpowers");
 			}
 		}
-		Loop;
+		Loop
     AA12Ready:
-    	AAEG A -1;
-    	Loop;
+    	AAEG A -1
+    	Loop
     AA12Fire:
     	AAEF A 0 BRIGHT {
 			A_GiveInventory("WeaponInUse",1);
 			A_FireBullets(1,1,-1,32,"AA12Puff",1,1920);
 			A_PlaySound("aa12/fire",CHAN_WEAPON);
 		}
-		AAEF A 1 Offset(3,2) BRIGHT;
-    	AAEF B 1 Offset(6,4) BRIGHT;
-    	AAEG C 1 Offset(9,6);
-		AAEG C 1 Offset(12,8);
-		AAEG B 1 Offset(9,6);
-		AAEG B 1 Offset(6,4);
-		AAEG A 1 Offset(3,2);
-		AAEG A 1 Offset(0,0);
+		AAEF A 1 Offset(3,2) BRIGHT
+    	AAEF B 1 Offset(6,4) BRIGHT
+    	AAEG C 1 Offset(9,6)
+		AAEG C 1 Offset(12,8)
+		AAEG B 1 Offset(9,6)
+		AAEG B 1 Offset(6,4)
+		AAEG A 1 Offset(3,2)
+		AAEG A 1 Offset(0,0)
 		TNT1 A 0 {
 			if(CheckInventory("WeaponInUse",1)) {
 				A_Overlay(AA12N,"AA12Ready");
@@ -220,94 +214,88 @@ Class AA12 : PPGWeapon
 			}
 			A_TakeInventory("WeaponInUse",1);
 		}
-    	Stop;
+    	Stop
    FBHolster:
 	  AAEG A 0 {
 			A_GiveInventory("SPInUse",1);
 			A_GiveInventory("SP7InUse",1);
 			A_Overlay(AA12N,"Null");
 		}
-	  "####" "#" 1 Offset(0,16);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,16)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,96)
 	  "####" "#" 0 {
 			A_Overlay(SPower7,"BFRRaise");
 			A_OverlayFlags(SPower7,PPGWeapBob,false);
 		}
-	  Stop;
+	  Stop
    FBRaise:
-	  AAEG A 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,16);
+	  AAEG A 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,16)
 	  "####" "#" 0 {
 			A_TakeInventory("SPInUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 			A_Overlay(AA12N,"AA12Ready");
 			A_OverlayFlags(AA12N,PPGWeapBob,true);
 	  }
-	  Stop;
+	  Stop
     }
 }
 
-Class AA12Ammo : Ammo
+ACTOR AA12Ammo : Ammo
 {
-	Default {
-		Inventory.PickupSound "aa12/clipout";
-		Inventory.PickupMessage "Picked up four Frag-12 shells.";
-		Inventory.MaxAmount 100;
-		Ammo.BackpackAmount 4;
-		Ammo.BackpackMaxAmount 100;
-		Inventory.Amount	4;
-	}
+	Inventory.PickupSound "aa12/clipout"
+	Inventory.PickupMessage "Picked up four Frag-12 shells."
+	Inventory.MaxAmount 100
+	Ammo.BackpackAmount 4
+	Ammo.BackpackMaxAmount 100
+	Inventory.Amount	4
 	States
 	{
 	Spawn:
-		AAEA A -1;
-		LOOP;
+		AAEA A -1
+		LOOP
 	}
 }
 
-Class AA12AmmoDrum : AA12Ammo
+ACTOR AA12AmmoDrum : AA12Ammo
 {
-	Default {
-		Inventory.PickupSound "aa12/clipout";
-		Inventory.PickupMessage "Picked up a Frag-12 Ammo Drum.";
-		Inventory.Amount	20;
-		Scale .375;
-	}
+	Inventory.PickupSound "aa12/clipout"
+	Inventory.PickupMessage "Picked up a Frag-12 Ammo Drum."
+	Inventory.Amount	20
+	Scale .375
 	States
 	{
 	Spawn:
-		AAEA B -1;
-		LOOP;
+		AAEA B -1
+		LOOP
 	}
 }
 
-Class AA12Puff : Actor
+ACTOR AA12Puff : Actor
 {
-	Default {
-		DamageType "AntiTank";
-		+FORCERADIUSDMG;
-		+ALWAYSPUFF;
-		+PUFFONACTORS;
-		+PUFFGETSOWNER;
-		+NOGRAVITY;
-		Scale .5;
-		DONTHURTSHOOTER;
-	}
+	DamageType "AntiTank"
+	+FORCERADIUSDMG
+	+ALWAYSPUFF
+	+PUFFONACTORS
+	+PUFFGETSOWNER
+	+NOGRAVITY
+	Scale .5
+	DONTHURTSHOOTER
 	States
 	{
 	Spawn:
-		TNT1 A 0 A_PlaySound("weapon/rocklx");
-		TNT1 A 0 A_Explode(32,96,0);
+		TNT1 A 0 A_PlaySound("weapon/rocklx")
+		TNT1 A 0 A_Explode(32,96,0)
 	//	TNT1 A 0 Radius_Quake(10,10,0,64,0)
-		EXP3 GHIJKLMNOPQRSTUVW 1 BRIGHT;
-		Stop;
+		EXP3 GHIJKLMNOPQRSTUVW 1 BRIGHT
+		Stop
 	}
 }

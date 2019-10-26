@@ -1,74 +1,68 @@
-Class FPGlock18 : Inventory
-{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+ACTOR FPGlock18 : Inventory
+{ +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1 }
 
-Class Glock18Pickup : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the Glock 18!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR Glock18Pickup : CustomInventory {
+	Inventory.PickupMessage "You got the Glock 18!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		PIST A -1;
-		Stop;
+		PIST A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Glock18",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("Glock18");
-		TNT1 A 0 A_GiveInventory("FPGlock18",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("Glock18",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("Glock18")
+		TNT1 A 0 A_GiveInventory("FPGlock18",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("PPGClip",300,"PFail");
-		TNT1 A 0 A_GiveInventory("PPGClip",12);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGClip",300,"PFail")
+		TNT1 A 0 A_GiveInventory("PPGClip",12)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	}
 }
 
-Class Glock18Drop : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the Glock 18!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR Glock18Drop : CustomInventory {
+	Inventory.PickupMessage "You got the Glock 18!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		PIST A -1;
-		Stop;
+		PIST A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("Glock18",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("Glock18");
-		TNT1 A 0 A_GiveInventory("FPGlock18",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("Glock18",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("Glock18")
+		TNT1 A 0 A_GiveInventory("FPGlock18",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("PPGClip",300,"PFail");
-		TNT1 A 0 A_GiveInventory("PPGClip",6);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGClip",300,"PFail")
+		TNT1 A 0 A_GiveInventory("PPGClip",6)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	}
 }
 
-Class Glock18 : PPGWeapon
+ACTOR Glock18 : PPGWeapon
 {
-	Default {
-		Weapon.AmmoType1 "PPGClip";
-		Weapon.AmmoUse1 1;
-		Weapon.AmmoGive1 12;
-//		AttackSound "glock/fire";
-		Inventory.Icon "pisticon";
-		Weapon.SelectionOrder 1900;
-		Weapon.SlotNumber 2;
-		Inventory.PickupMessage "You got the Glock 18!";
-		Obituary "%o was perforated by %k's Glock.";
-	}
+	Weapon.AmmoType1 "PPGClip"
+	Weapon.AmmoUse1 1
+	Weapon.AmmoGive1 12
+//	AttackSound "glock/fire"
+	Inventory.Icon "pisticon"
+	Weapon.SelectionOrder 1900
+	Weapon.SlotNumber 2
+	Inventory.PickupMessage "You got the Glock 18!"
+	Obituary "%o was perforated by %k's Glock."
 	States
 	{
 	Spawn:
-		PIST A -1;
-		Stop;
+		PIST A -1
+		Stop
 	Deselect:
 		TNT1 A 0 {
 			A_Overlay(GlockF,"Null");
@@ -86,15 +80,15 @@ Class Glock18 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		GLKG A 1 A_Lower(12);
-		Loop;
+		GLKG A 1 A_Lower(12)
+		Loop
 	Select:
 		TNT1 A 0 {
 			A_Overlay(GlockN,"GlockReady");
 			A_OverlayFlags(GlockN,PPGWeapMove,true);
 			A_PlaySound("pistol/raise",CHAN_AUTO);
 		}
-		TNT1 A 0 A_PlaySound("glock/boltb",CHAN_AUTO);
+		TNT1 A 0 A_PlaySound("glock/boltb",CHAN_AUTO)
 	Raise:
 		TNT1 A 0 { 
 			A_TakeInventory("RHSeq",9999);
@@ -106,17 +100,17 @@ Class Glock18 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		TNT1 A 1 A_Raise(12);
-		Loop;
+		TNT1 A 1 A_Raise(12)
+		Loop
     Ready:
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo");
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo")
     	TNT1 A 0 {
 			if(!CheckInventory("WeaponInUse",1)
 				&& !CheckInventory("SP7InUse",1)) {
 				A_Overlay(GlockN,"GlockReady",true);
 			}
 		}
-    	Goto ReadyLoop;
+    	Goto ReadyLoop
 	ReadyLoop:
     	TNT1 A 1 {
 			if(CheckInventory("WeaponInUse",1) || CheckInventory("SPInUse",1)) {
@@ -134,13 +128,13 @@ Class Glock18 : PPGWeapon
 				A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);	
 			}
 		}
-    	Goto Ready;
+    	Goto Ready
    GlockDeselect:
-	  GLKG A 7;
-	  stop;
+	  GLKG A 7
+	  stop
 	GlockReady:
-		GLKG A -1;
-		Stop;
+		GLKG A -1
+		Stop
     Fire:
 		TNT1 A 1 { 
 			if(!CheckInventory("WeaponInUse",1)
@@ -176,12 +170,12 @@ Class Glock18 : PPGWeapon
 											 to the Ready state.
 			*/
 		}
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo") // This is the working result,
 											  // running in a separate frame.
-		Goto Ready;
+		Goto Ready
 	OutofAmmo:
-		TNT1 A 1 A_JumpIfNoAmmo(1);
-		Goto Ready;
+		TNT1 A 1 A_JumpIfNoAmmo(1)
+		Goto Ready
 		TNT1 A 1 {
 			if(!CheckInventory("WeaponInUse",1)) {
 				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
@@ -200,18 +194,18 @@ Class Glock18 : PPGWeapon
 //					A_Overlay(QKick,"QuickKick");
 //			}
 		}
-		loop;
+		loop
 	GlockFire:
     	GLKG B 1 Offset(3,3) { //Offset(3,35) BRIGHT {
 			A_GiveInventory("WeaponInUse",1);
 			A_FireBullets(2,2,-1,5,"BulletPuff",1,1280);
 			A_PlaySound("glock/fire",CHAN_WEAPON);
 		}
-    	GLKG B 1 Offset(6,6); //Offset(6,38) BRIGHT;
-		GLKG B 1 Offset(9,9); //Offset(9,41);
-		GLKG B 1 Offset(6,6); //Offset(6,38);
-		GLKG A 1 Offset(3,3); //Offset(3,35);
-		GLKG A 1 Offset(0,0); //Offset(0,32);
+    	GLKG B 1 Offset(6,6) //Offset(6,38) BRIGHT;
+		GLKG B 1 Offset(9,9) //Offset(9,41);
+		GLKG B 1 Offset(6,6) //Offset(6,38);
+		GLKG A 1 Offset(3,3) //Offset(3,35);
+		GLKG A 1 Offset(0,0) //Offset(0,32);
 		TNT1 A 0 {
 			if(CheckInventory("WeaponInUse",1)) {
 				A_Overlay(GlockN,"GlockReady");
@@ -219,37 +213,37 @@ Class Glock18 : PPGWeapon
 			}
 			A_TakeInventory("WeaponInUse",1);
 		}
-    	Stop; //Goto Ready;
+    	Stop //Goto Ready;
    FBHolster:
 	  GLKG A 0  {
 			A_GiveInventory("SPInUse",1);
 			A_GiveInventory("SP7InUse",1);
 			A_Overlay(GlockN,"Null");
 		}
-	  "####" "#" 1 Offset(0,16);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,16)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,96)
 	  "####" "#" 0 {
 			A_Overlay(SPower7,"BFRRaise");
 			A_OverlayFlags(SPower7,PPGWeapBob,false);
 		}
-	  Stop;
+	  Stop
    FBRaise:
-	  GLKG A 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,16);
+	  GLKG A 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,16)
 	  "####" "#" 0 {
 			A_Overlay(GlockN,"GlockReady");
 			A_OverlayFlags(GlockN,PPGWeapBob,true);
 			A_TakeInventory("SPInUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 	  }
-	  Stop;
+	  Stop
    }
 }

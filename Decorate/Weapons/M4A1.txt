@@ -1,77 +1,71 @@
-Class FPM4A1 : Inventory
-{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+ACTOR FPM4A1 : Inventory
+{ +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1 }
 
-Class M4A1Pickup : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR M4A1Pickup : CustomInventory {
+	Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		M4CP A -1;
-		Stop;
+		M4CP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("M4A1",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("M4A1");
-		TNT1 A 0 A_GiveInventory("FPM4A1",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("M4A1",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("M4A1")
+		TNT1 A 0 A_GiveInventory("FPM4A1",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("M4A1Ammo",240,"PFail");
-		TNT1 A 0 A_GiveInventory("M4A1Ammo",30);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("M4A1Ammo",240,"PFail")
+		TNT1 A 0 A_GiveInventory("M4A1Ammo",30)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	}
 }
 
-Class M4A1Drop : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR M4A1Drop : CustomInventory {
+	Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		M4CP A -1;
-		Stop;
+		M4CP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("M4A1",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("M4A1");
-		TNT1 A 0 A_GiveInventory("FPM4A1",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("M4A1",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("M4A1")
+		TNT1 A 0 A_GiveInventory("FPM4A1",1)
+		Stop
 	PFail:
-		TNT1 A 0;
-		fail;
+		TNT1 A 0
+		fail
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("M4A1Ammo",240,"PFail");
-		TNT1 A 0 A_GiveInventory("M4A1Ammo",15);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("M4A1Ammo",240,"PFail")
+		TNT1 A 0 A_GiveInventory("M4A1Ammo",15)
+		Stop
 	}
 }
 
-Class M4A1 : PPGWeapon
+ACTOR M4A1 : PPGWeapon
 {
-	Default {
-		Weapon.AmmoType1 "M4A1Ammo";
-		Weapon.AmmoUse 1;
-		Weapon.AmmoGive1 30;
-		Weapon.SlotNumber 4;
-		Weapon.SelectionOrder 700;
-		Inventory.Icon "m4a1icon";
-//		AttackSound "m4a1/fire";
-		Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!";
-		Obituary "%o underestimated %k's 'little friend'.";
-	}
+	Weapon.AmmoType1 "M4A1Ammo"
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive1 30
+	Weapon.SlotNumber 4
+	Weapon.SelectionOrder 700
+	Inventory.Icon "m4a1icon"
+//	AttackSound "m4a1/fire"
+   Inventory.PickupMessage "You got the M4A1 Carbine Assault Rifle!"
+   Obituary "%o underestimated %k's 'little friend'."
    States
    {
 	Spawn:
-		M4CP A -1;
-		Stop;
+		M4CP A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_GiveInventory("FPM4A1",1);
-		Stop;
+		TNT1 A 0 A_GiveInventory("FPM4A1",1)
+		Stop
 	Deselect:
 		TNT1 A 0 {
 			A_Overlay(M4A1F,"Null");
@@ -89,8 +83,8 @@ Class M4A1 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		M4CG A 1 A_Lower(12);
-		Loop;
+		M4CG A 1 A_Lower(12)
+		Loop
 	Select:
 		TNT1 A 0 {
 			A_Overlay(M4A1N,"M4A1Ready");
@@ -108,10 +102,10 @@ Class M4A1 : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		TNT1 A 1 A_Raise(12);
-		Loop;
+		TNT1 A 1 A_Raise(12)
+		Loop
     Ready:
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo");
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo")
     	TNT1 A 0 {
 			if(!CheckInventory("WeaponInUse",1)
 				&& !CheckInventory("SP7InUse",1)) {
@@ -119,7 +113,7 @@ Class M4A1 : PPGWeapon
 				A_OverlayFlags(M4A1N,PPGWeapBob,true);
 			}
 		}
-    	Goto ReadyLoop;
+    	Goto ReadyLoop
 	ReadyLoop:
     	TNT1 A 1 {
 			if(CheckInventory("WeaponInUse",1) || CheckInventory("SPInUse",1)) {
@@ -137,13 +131,13 @@ Class M4A1 : PPGWeapon
 				A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);	
 			}
 		}
-    	Goto Ready;
+    	Goto Ready
    M4A1Deselect:
-	  M4A1 A 7;
-	  stop;
+	  M4A1 A 7
+	  stop
 	M4A1Ready:
-		M4CG A -1;
-		Stop;
+		M4CG A -1
+		Stop
     Fire:
 		TNT1 A 1 { 
 			if(!CheckInventory("WeaponInUse",1)
@@ -177,10 +171,10 @@ Class M4A1 : PPGWeapon
 											 to the Ready state.
 			*/
 		}
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo") // This is the working result,
 											  // running in a separate frame.
-		TNT1 A 0 A_JumpIfInventory("AttackRefire",1,"Hold");
-		Goto Ready;
+		TNT1 A 0 A_JumpIfInventory("AttackRefire",1,"Hold")
+		Goto Ready
     Hold:
 		TNT1 A 1 { 
 			if(!CheckInventory("WeaponInUse",1)
@@ -214,13 +208,13 @@ Class M4A1 : PPGWeapon
 											 to the Ready state.
 			*/
 		}
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo") // This is the working result,
 											  // running in a separate frame.
-		TNT1 A 0 A_JumpIfInventory("AttackRefire",1,"Hold");
-		Goto Ready;
+		TNT1 A 0 A_JumpIfInventory("AttackRefire",1,"Hold")
+		Goto Ready
 	OutofAmmo:
-		TNT1 A 1 A_JumpIfNoAmmo(1);
-		Goto Ready;
+		TNT1 A 1 A_JumpIfNoAmmo(1)
+		Goto Ready
 		TNT1 A 1 {
 			if(!CheckInventory("WeaponInUse",1)) {
 				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
@@ -235,7 +229,7 @@ Class M4A1 : PPGWeapon
 				A_Overlay(SPower,"Superpowers");
 			}
 		}
-		Loop;
+		Loop
    M4A1Fire:
       160F A 0 BRIGHT {
 			A_Light1();
@@ -245,7 +239,7 @@ Class M4A1 : PPGWeapon
 			A_FireBullets(2,1,-1,8,"BulletPuff",1,1920);
 			A_PlaySound("m4a1/fire",CHAN_WEAPON);
 		}
-      M4CF B 1 BRIGHT Offset(4,4) A_Light2();
+      M4CF B 1 BRIGHT Offset(4,4) A_Light2()
       M4CG A 1 Offset(2,2) {
 			A_Light0();
 		}
@@ -256,7 +250,7 @@ Class M4A1 : PPGWeapon
 			}
 			A_TakeInventory("WeaponInUse",1);
 		}
-      Stop;
+      Stop
    M4A1Hold:
       160F A 0 BRIGHT {
 			A_Light1();
@@ -266,7 +260,7 @@ Class M4A1 : PPGWeapon
 			A_FireBullets(4,2,-1,8,"BulletPuff",1,1920);
 			A_PlaySound("m4a1/fire",CHAN_WEAPON);
 		}
-      M4CF B 1 BRIGHT Offset(4,4) A_Light2();
+      M4CF B 1 BRIGHT Offset(4,4) A_Light2()
       M4CG A 1 Offset(2,2) {
 			A_Light0();
 		}
@@ -277,57 +271,55 @@ Class M4A1 : PPGWeapon
 			}
 			A_TakeInventory("WeaponInUse",1);
 		}
-      Stop;
+      Stop
    FBHolster:
 	  M4CG A 0 {
 			A_GiveInventory("SPInUse",1);
 			A_GiveInventory("SP7InUse",1);
 			A_Overlay(M4A1N,"Null");
 		}
-	  "####" "#" 1 Offset(0,16);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,16)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,96)
 	  "####" "#" 0 {
 			A_Overlay(SPower7,"BFRRaise");
 			A_OverlayFlags(SPower7,PPGWeapBob,false);
 		}
-	  Stop;
+	  Stop
    FBRaise:
-	  M4CG A 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,16);
+	  M4CG A 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,16)
 	  "####" "#" 0 {
 			A_TakeInventory("SPInUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 			A_Overlay(M4A1N,"M4A1Ready");
 			A_OverlayFlags(M4A1N,PPGWeapBob,true);
 	  }
-	  Stop;
+	  Stop
    }
 }
 
-Class M4A1Ammo : Ammo
+ACTOR M4A1Ammo : Ammo
 {
-	Default {
-		//$Category ammunition
-		Inventory.PickupSound "m4a1/clipout";
-		Inventory.PickupMessage "Picked up a 5.56mm Assault Rifle Clip.";
-		Scale 0.75;
-		Inventory.MaxAmount 240;
-		Inventory.Amount	30;
-		Ammo.BackpackAmount 15;
-		Ammo.BackpackMaxAmount 240;
-	}
+	//$Category ammunition
+	Inventory.PickupSound "m4a1/clipout"
+	Inventory.PickupMessage "Picked up a 5.56mm Assault Rifle Clip."
+	Scale 0.75
+	Inventory.MaxAmount 240
+	Inventory.Amount	30
+	Ammo.BackpackAmount 15
+	Ammo.BackpackMaxAmount 240
 	States
 	{
 	Spawn:
-		M4CA A -1;
-		Loop;
+		M4CA A -1
+		Loop
 	}
 }

@@ -1,5 +1,5 @@
 defaultbind z "Give SPSwitchPrev"
 defaultbind x "Give SPSwitchNext"
-defaultbind mouse2 "+user1"
-defaultbind mouse3 "+altattack"
+bind mouse2 "+user1"
+bind mouse3 "+altattack"
 defaultbind q "+user2"

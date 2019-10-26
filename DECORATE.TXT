@@ -1,6 +1,4 @@
-/*
-
-#include "Decorate/Constants.AED"
+#include "Decorate/PPGConstants.txt"
 
 // Players
 
@@ -21,4 +19,6 @@
 #include "Decorate/Weapons/PPGShotgun.txt"
 #include "Decorate/Weapons/M4A1.txt"
 #include "Decorate/Weapons/AA12.txt"
-*/
+
+// Items
+#include "Decorate/Items/Health.AED"

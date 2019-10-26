@@ -1,82 +1,78 @@
-Class FPShotgun : Inventory
-{ Default { +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1; } }
+ACTOR FPShotgun : Inventory
+{  +INVENTORY.UNDROPPABLE Inventory.MaxAmount 1 }
 
-Class PPGShotgunPickup : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the Winchester 1887 Shotgun!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR PPGShotgunPickup : CustomInventory {
+	
+	Inventory.PickupMessage "You got the Winchester 1887 Shotgun!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		SHOT A -1;
-		Stop;
+		SHOT A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGShotgun",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("PPGShotgun");
-		TNT1 A 0 A_GiveInventory("FPShotgun",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGShotgun",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("PPGShotgun")
+		TNT1 A 0 A_GiveInventory("FPShotgun",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("PPGShell",48,"PFail");
-		TNT1 A 0 A_GiveInventory("PPGShell",8);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGShell",48,"PFail")
+		TNT1 A 0 A_GiveInventory("PPGShell",8)
+		Stop
 	PFail:
-		TNT1 A 0;
-		Fail;
+		TNT1 A 0
+		Fail
 	}
 }
-Class PPGShotgunDrop : CustomInventory {
-	Default {
-		Inventory.PickupMessage "You got the Winchester 1887 Shotgun!";
-		Inventory.PickupSound "misc/w_pkup";
-	}
+ACTOR PPGShotgunDrop : CustomInventory {
+	
+	Inventory.PickupMessage "You got the Winchester 1887 Shotgun!"
+	Inventory.PickupSound "misc/w_pkup"
 	States
 	{
 	Spawn:
-		SHOT A -1;
-		Stop;
+		SHOT A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_JumpIfInventory("PPGShotgun",1,"Ammo");
-		TNT1 A 0 A_GiveInventory("PPGShotgun",2);
-		TNT1 A 0 A_GiveInventory("FPShotgun",1);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGShotgun",1,"Ammo")
+		TNT1 A 0 A_GiveInventory("PPGShotgun",2)
+		TNT1 A 0 A_GiveInventory("FPShotgun",1)
+		Stop
 	Ammo:
-		TNT1 A 0 A_JumpIfInventory("PPGShell",48,"PFail");
-		TNT1 A 0 A_GiveInventory("PPGShell",4);
-		Stop;
+		TNT1 A 0 A_JumpIfInventory("PPGShell",48,"PFail")
+		TNT1 A 0 A_GiveInventory("PPGShell",4)
+		Stop
 	PFail:
-		TNT1 A 0;
-		Fail;
+		TNT1 A 0
+		Fail
 	}
 }
 
 
-Class PPGShotgun : PPGWeapon
-{
-	Default {
-		Weapon.AmmoType		"PPGShell";
-		Weapon.AmmoUse		1;
-		Weapon.AmmoGive		8;
-		Radius				12;
-		Height				12;
-		Weapon.SlotNumber 3;
-//		+AMMO_OPTIONAL
-		+NOEXTREMEDEATH
-//		+NOAUTOFIRE
-		Weapon.SelectionOrder 1300;
-//		AttackSound "shotgun/fire";
-		Inventory.Icon "shoticon";
-		Inventory.PickupMessage "You got the Winchester 1887 Shotgun!";
-		Obituary "%k gave %o a taste of buckshot.";
-	}
+ACTOR PPGShotgun : PPGWeapon
+{	
+	Weapon.AmmoType		"PPGShell"
+	Weapon.AmmoUse		1
+	Weapon.AmmoGive		8
+	Radius				12
+	Height				12
+	Weapon.SlotNumber 3
+//	+AMMO_OPTIONAL
+	+NOEXTREMEDEATH
+//	+NOAUTOFIRE
+	Weapon.SelectionOrder 1300
+//	AttackSound "shotgun/fire"
+	Inventory.Icon "shoticon"
+	Inventory.PickupMessage "You got the Winchester 1887 Shotgun!"
+	Obituary "%k gave %o a taste of buckshot."
 	States
 	{
 	Spawn:
-		SHOT A -1;
-		Stop;
+		SHOT A -1
+		Stop
 	Pickup:
-		TNT1 A 0 A_GiveInventory("FPShotgun",1);
-		Stop;
+		TNT1 A 0 A_GiveInventory("FPShotgun",1)
+		Stop
 	Deselect:
 		TNT1 A 0 {
 			A_Overlay(ShotgunF,"Null");
@@ -94,15 +90,15 @@ Class PPGShotgun : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		WSGG A 1 A_Lower(12);
-		Loop;
+		WSGG A 1 A_Lower(12)
+		Loop
 	Select:
 		TNT1 A 0 {
 			A_Overlay(ShotgunN,"ShotgunReady");
 			A_OverlayFlags(ShotgunN,PPGWeapMove,true);
 			A_PlaySound("weapon/raisea",CHAN_AUTO);
 		}
-		TNT1 A 0 A_PlaySound("shotgun/bolt",CHAN_AUTO);
+		TNT1 A 0 A_PlaySound("shotgun/bolt",CHAN_AUTO)
 	Raise:
 		TNT1 A 0 { 
 			A_TakeInventory("RHSeq",9999);
@@ -114,10 +110,10 @@ Class PPGShotgun : PPGWeapon
 			A_TakeInventory("SP6InUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 		}
-		TNT1 A 1 A_Raise(12);
-		Loop;
+		TNT1 A 1 A_Raise(12)
+		Loop
     Ready:
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo");
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo")
     	TNT1 A 0 {
 			if(!CheckInventory("WeaponInUse",1)
 				&& !CheckInventory("SP7InUse",1)) {
@@ -125,7 +121,7 @@ Class PPGShotgun : PPGWeapon
 				A_OverlayFlags(ShotgunN,PPGWeapBob,true);
 			}
 		}
-    	Goto ReadyLoop;
+    	Goto ReadyLoop
 	ReadyLoop:
     	TNT1 A 1 {
 			if(CheckInventory("WeaponInUse",1) || CheckInventory("SPInUse",1) || CheckInventory("SP7InUse",1)) {
@@ -143,15 +139,15 @@ Class PPGShotgun : PPGWeapon
 				A_WeaponReady(WRF_ALLOWUSER1|WRF_ALLOWUSER2);	
 			}
 		}
-    	Goto Ready;
+    	Goto Ready
 	ShotgunDeselect:
-		WSGG A 1 A_Lower(12);
-		wait;
-		TNT1 A 1;
-		stop;
+		WSGG A 1 A_Lower(12)
+		wait
+		TNT1 A 1
+		stop
 	ShotgunReady:
-		WSGG A -1;
-		Stop;
+		WSGG A -1
+		Stop
     Fire:
 		TNT1 A 1 { 
 			if(!CheckInventory("WeaponInUse",1)
@@ -186,12 +182,12 @@ Class PPGShotgun : PPGWeapon
 											 to the Ready state.
 			*/
 		}
-		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo"); // This is the working result,
+		TNT1 A 0 A_JumpIfNoAmmo("OutofAmmo") // This is the working result,
 											  // running in a separate frame.
-		Goto Ready;
+		Goto Ready
 	OutofAmmo:
-		TNT1 A 1 A_JumpIfNoAmmo(1);
-		Goto Ready;
+		TNT1 A 1 A_JumpIfNoAmmo(1)
+		Goto Ready
 		TNT1 A 1 {
 			if(!CheckInventory("WeaponInUse",1)) {
 				A_WeaponReady(WRF_NOFIRE|WRF_NOSWITCH);
@@ -206,41 +202,41 @@ Class PPGShotgun : PPGWeapon
 				A_Overlay(SPower,"Superpowers");
 			}
 		}
-		Loop;
+		Loop
     ShotgunFire:
     	WSGF A 1 BRIGHT Offset(5,5) {
 			A_GiveInventory("WeaponInUse",1);
 			A_FireBullets(5.6,3.05,9,5,"BulletPuff",1,1280);
 			A_PlaySound("shotgun/fire",CHAN_WEAPON);
 		}
-    	WSGF A 1 BRIGHT Offset(10,10);
-		WSGF B 1 Offset(0,10);
-		WSGF B 1 OffSet(-2,8);
-		WSGF B 1 OffSet(-4,6);
-		WSGF B 1 OffSet(-6,4);
-		WSGF A 1 OffSet(6,-6);
-		WSGF A 1 OffSet(4,-4);
-		WSGF A 1 OffSet(2,-2);
-		WSGF A 1 OffSet(0,0);
-		WSGF A 1 OffSet(-1,2);
-		WSGC A 1 OffSet(-3,5);
-		WSGC A 1 OffSet(-6,9);
-		WSGC A 1 OffSet(0,0);
-		WSGC A 1 OffSet(1,-2);
-		WSGC A 1 OffSet(3,-5);
-		WSGC B 1 OffSet(1,-2) A_PlaySound("shotgun/bolt",CHAN_AUTO);
-		WSGC B 1 OffSet(0,0);
-		WSGC CDEFGHIJKL 1;
-		WSGC M 1;
-		WSGC M 1 OffSet(1,-2);
-		WSGC N 1 OffSet(-3,5);
-		WSGC N 1 OffSet(-1,2);
-		WSGC N 1 OffSet(0,0);
-		WSGC N 1 OffSet(1,2);
-		WSGC N 1 OffSet(3,5);
-		WSGG A 1 OffSet(-3,-5);
-		WSGG A 1 OffSet(-1,-2);
-		WSGG A 1 OffSet(0,0);
+    	WSGF A 1 BRIGHT Offset(10,10)
+		WSGF B 1 Offset(0,10)
+		WSGF B 1 OffSet(-2,8)
+		WSGF B 1 OffSet(-4,6)
+		WSGF B 1 OffSet(-6,4)
+		WSGF A 1 OffSet(6,-6)
+		WSGF A 1 OffSet(4,-4)
+		WSGF A 1 OffSet(2,-2)
+		WSGF A 1 OffSet(0,0)
+		WSGF A 1 OffSet(-1,2)
+		WSGC A 1 OffSet(-3,5)
+		WSGC A 1 OffSet(-6,9)
+		WSGC A 1 OffSet(0,0)
+		WSGC A 1 OffSet(1,-2)
+		WSGC A 1 OffSet(3,-5)
+		WSGC B 1 OffSet(1,-2) A_PlaySound("shotgun/bolt",CHAN_AUTO)
+		WSGC B 1 OffSet(0,0)
+		WSGC CDEFGHIJKL 1
+		WSGC M 1
+		WSGC M 1 OffSet(1,-2)
+		WSGC N 1 OffSet(-3,5)
+		WSGC N 1 OffSet(-1,2)
+		WSGC N 1 OffSet(0,0)
+		WSGC N 1 OffSet(1,2)
+		WSGC N 1 OffSet(3,5)
+		WSGG A 1 OffSet(-3,-5)
+		WSGG A 1 OffSet(-1,-2)
+		WSGG A 1 OffSet(0,0)
 		TNT1 A 0 {
 			if(CheckInventory("WeaponInUse",1)) {
 				A_Overlay(ShotgunN,"ShotgunReady");
@@ -248,7 +244,7 @@ Class PPGShotgun : PPGWeapon
 			}
 			A_TakeInventory("WeaponInUse",1);
 		}
-    	Stop; //Goto Ready;
+    	Stop //Goto Ready;
 //      Gunfire:
 //     	TNT1 A 0
 //      	TNT1 A 1 A_Light2
@@ -261,30 +257,30 @@ Class PPGShotgun : PPGWeapon
 			A_GiveInventory("SP7InUse",1);
 			A_Overlay(ShotgunN,"Null");
 		}
-	  "####" "#" 1 Offset(0,16);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,96);
+	  "####" "#" 1 Offset(0,16)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,96)
 	  "####" "#" 0 {
 			A_Overlay(SPower7,"BFRRaise");
 			A_OverlayFlags(SPower7,PPGWeapBob,false);
 		}
-	  Stop;
+	  Stop
    FBRaise:
-	  WSGG A 1 Offset(0,96);
-	  "####" "#" 1 Offset(0,80);
-	  "####" "#" 1 Offset(0,64);
-	  "####" "#" 1 Offset(0,48);
-	  "####" "#" 1 Offset(0,32);
-	  "####" "#" 1 Offset(0,16);
+	  WSGG A 1 Offset(0,96)
+	  "####" "#" 1 Offset(0,80)
+	  "####" "#" 1 Offset(0,64)
+	  "####" "#" 1 Offset(0,48)
+	  "####" "#" 1 Offset(0,32)
+	  "####" "#" 1 Offset(0,16)
 	  "####" "#" 0 {
 			A_TakeInventory("SPInUse",9999);
 			A_TakeInventory("SP7InUse",9999);
 			A_Overlay(ShotgunN,"ShotgunReady");
 			A_OverlayFlags(ShotgunN,PPGWeapBob,true);
 	  }
-	  Stop;
+	  Stop
     }
 }

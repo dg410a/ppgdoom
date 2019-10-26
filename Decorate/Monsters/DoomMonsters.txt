@@ -1,0 +1,126 @@
+ACTOR PPGZombieMan : Zombieman
+{
+	DropItem "PPGClip", 128
+	DropItem "PPGEnergyDrop", 64
+}
+
+ACTOR PPGZombieManNonGM : Zombieman
+{
+	DropItem "PPGEnergyClip", 128
+}
+
+ACTOR PPGShotgunGuy : ShotgunGuy
+{
+	DropItem "PPGShotgunDrop", 128
+	DropItem "PPGEnergyClip", 64
+}
+
+ACTOR PPGShotgunGuyNonGM : ShotgunGuy
+{
+	DropItem "PPGEnergySmall", 128 
+}
+
+ACTOR PPGChaingunGuy : ChaingunGuy
+{
+//	DropItem "PPGClipBox", 128
+	DropItem "M4A1Drop", 128
+	DropItem "PPGEnergyClip", 64 
+}
+
+ACTOR PPGChaingunGuyNonGM : ChaingunGuy
+{
+	DropItem "PPGEnergySmall", 128 
+	DropItem "PPGEnergySmall", 128 
+}
+
+ACTOR PPGWolfensteinSS : WolfensteinSS
+{
+	DropItem "PPGClip", 128
+	DropItem "PPGClipBox", 128
+	DropItem "M4A1Ammo", 128
+	DropItem "PPGEnergyClip", 64 
+}
+
+ACTOR PPGWolfensteinSSNonGM : WolfensteinSS
+{
+	DropItem "PPGEnergySmall", 128 
+}
+
+ACTOR PPGImp : DoomImp replaces DoomImp
+{
+	DropItem "PPGEnergyClip", 64 
+}
+
+ACTOR PPGDemon : Demon replaces Demon
+{
+	DropItem "PPGEnergySmall", 64 
+}
+
+ACTOR PPGSpectre : Spectre replaces Spectre
+{
+	DropItem "PPGEnergySmall", 64 
+}
+
+ACTOR PPGLostSoul : LostSoul replaces LostSoul
+{
+	DropItem "PPGEnergyClip", 64 
+}
+
+ACTOR PPGCacodemon : Cacodemon replaces Cacodemon
+{
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergyClip", 64 
+}
+
+ACTOR PPGHellKnight : HellKnight replaces HellKnight
+{
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergySmall", 64 
+}
+
+ACTOR PPGBaronofHell : BaronofHell replaces BaronofHell
+{
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergySmall", 64 
+}
+
+ACTOR PPGArachnotron : Arachnotron replaces Arachnotron
+{
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergySmall", 64 
+}
+
+ACTOR PPGRevenant : Revenant replaces Revenant
+{
+	DropItem "PPGEnergySmall", 64 
+	DropItem "PPGEnergyDrop", 64 
+}
+
+ACTOR PPGFatso : Fatso replaces Fatso
+{
+	DropItem "PPGEnergyClipBox", 64 
+}
+
+ACTOR PPGArchVile : ArchVile replaces ArchVile
+{
+	DropItem "PPGEnergyClipBox", 64 
+	DropItem "PPGEnergyDrop", 64 
+}
+
+ACTOR PPGSpiderMastermind : SpiderMastermind replaces SpiderMastermind
+{
+	DropItem "PPGEnergyBig", 48 
+	DropItem "PPGEnergyBig", 48 
+	DropItem "PPGEnergySmall", 48 
+	DropItem "PPGEnergySmall", 48 
+}
+
+ACTOR PPGCyberdemon : Cyberdemon replaces Cyberdemon
+{
+	DropItem "PPGEnergyBig", 48 
+	DropItem "PPGEnergyBig", 48 
+	DropItem "PPGEnergyBig", 48 
+	DropItem "PPGEnergySmall", 48 
+}
